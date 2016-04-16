@@ -36,3 +36,5 @@
 .\objects\main.o: F:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: .\SYSTEM\usart.h
 .\objects\main.o: .\SYSTEM\sys.h
+.\objects\main.o: .\Class\serialport.h
+.\objects\main.o: .\hard\spi_enc28j60.h
