@@ -332,7 +332,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F10X_HD,</Define>
               <Undefine></Undefine>
-              <IncludePath>F:\Keil\ARM\CMSIS\RTOS;.\SYSTEM;.\Class;.\USER</IncludePath>
+              <IncludePath>F:\Keil\ARM\CMSIS\RTOS;.\SYSTEM;.\Class;.\USER;.\hard;.\drive</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -405,6 +405,16 @@
               <FileType>5</FileType>
               <FilePath>.\Class\led.h</FilePath>
             </File>
+            <File>
+              <FileName>serialport.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>.\Class\serialport.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>serialport.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Class\serialport.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -424,6 +434,46 @@
               <FileName>usart.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\SYSTEM\usart.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>hard</GroupName>
+          <Files>
+            <File>
+              <FileName>spi_enc28j60.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\hard\spi_enc28j60.c</FilePath>
+            </File>
+            <File>
+              <FileName>spi_enc28j60.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\hard\spi_enc28j60.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>drive</GroupName>
+          <Files>
+            <File>
+              <FileName>enc28j60.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\drive\enc28j60.c</FilePath>
+            </File>
+            <File>
+              <FileName>enc28j60.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\drive\enc28j60.h</FilePath>
+            </File>
+            <File>
+              <FileName>ip_arp_udp_tcp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\drive\ip_arp_udp_tcp.c</FilePath>
+            </File>
+            <File>
+              <FileName>ip_arp_udp_tcp.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\drive\ip_arp_udp_tcp.h</FilePath>
             </File>
           </Files>
         </Group>

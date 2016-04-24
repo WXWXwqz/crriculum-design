@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Objects\Traffic Control Net.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Traffic Control Net.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Sat Apr 16 20:08:37 2016
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Sun Apr 24 10:17:04 2016
 <BR><P>
-<H3>Maximum Stack Usage =        132 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        124 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 main &rArr; Sys_Init() &rArr; SerialPort::SerialPort(int) &rArr; uart_init &rArr; USART_Init &rArr; RCC_GetClocksFreq
 <P>
@@ -109,7 +109,7 @@ Global Symbols
 <P><STRONG><a name="[48]"></a>__main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry.o(.ARM.Collect$$$$00000000))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(.text)
 </UL>
-<P><STRONG><a name="[69]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+<P><STRONG><a name="[83]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
 
 <P><STRONG><a name="[4c]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
@@ -119,7 +119,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[4d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[6a]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
+<P><STRONG><a name="[84]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
 
 <P><STRONG><a name="[4e]"></a>_main_cpp_init$empty</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8a.o(.ARM.Collect$$$$00000009))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16 + Unknown Stack Size
@@ -128,13 +128,13 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[4b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__cpp_initialize__aeabi_
 </UL>
 
-<P><STRONG><a name="[6b]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
+<P><STRONG><a name="[85]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
 
-<P><STRONG><a name="[6c]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
+<P><STRONG><a name="[86]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
 
-<P><STRONG><a name="[6d]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
+<P><STRONG><a name="[87]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
 
-<P><STRONG><a name="[6e]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
+<P><STRONG><a name="[88]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
 
 <P><STRONG><a name="[0]"></a>Reset_Handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, startup_stm32f10x_hd.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
@@ -395,189 +395,417 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
 
-<P><STRONG><a name="[6f]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+<P><STRONG><a name="[89]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
 
-<P><STRONG><a name="[52]"></a>GPIO_Init</STRONG> (Thumb, 278 bytes, Stack size 24 bytes, stm32f10x_gpio.o(i.GPIO_Init))
+<P><STRONG><a name="[5d]"></a>GPIO_Init</STRONG> (Thumb, 278 bytes, Stack size 24 bytes, stm32f10x_gpio.o(i.GPIO_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = GPIO_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
-<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Led::Led(GPIO_TypeDef*, int)
-<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Enc28j60_Init
+<BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
+<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Led::Led(GPIO_TypeDef*, int)
+<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Enc28j60_Init
 </UL>
 
-<P><STRONG><a name="[53]"></a>GPIO_SetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_gpio.o(i.GPIO_SetBits))
-<BR><BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Enc28j60_Init
+<P><STRONG><a name="[5e]"></a>GPIO_SetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_gpio.o(i.GPIO_SetBits))
+<BR><BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Enc28j60_Init
 </UL>
 
-<P><STRONG><a name="[66]"></a>NVIC_Init</STRONG> (Thumb, 100 bytes, Stack size 16 bytes, misc.o(i.NVIC_Init))
+<P><STRONG><a name="[50]"></a>IPandARP_Serve</STRONG> (Thumb, 68 bytes, Stack size 8 bytes, netserve.o(i.IPandARP_Serve))
+<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = IPandARP_Serve &rArr; make_arp_answer_from_request &rArr; enc28j60PacketSend &rArr; enc28j60Write &rArr; enc28j60SetBank &rArr; enc28j60WriteOp &rArr; SPI1_ReadWrite
+</UL>
+<BR>[Calls]<UL><LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;make_arp_answer_from_request
+<LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eth_type_is_ip_and_my_ip
+<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;eth_type_is_arp_and_my_ip
+<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60PacketReceive
+</UL>
+<BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+</UL>
+
+<P><STRONG><a name="[80]"></a>NVIC_Init</STRONG> (Thumb, 100 bytes, Stack size 16 bytes, misc.o(i.NVIC_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = NVIC_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
+<BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
 </UL>
 
-<P><STRONG><a name="[51]"></a>RCC_APB2PeriphClockCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_APB2PeriphClockCmd))
-<BR><BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
-<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Led::Led(GPIO_TypeDef*, int)
-<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Enc28j60_Init
+<P><STRONG><a name="[55]"></a>Ping_Serve</STRONG> (Thumb, 38 bytes, Stack size 8 bytes, netserve.o(i.Ping_Serve))
+<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = Ping_Serve &rArr; make_echo_reply_from_request &rArr; enc28j60PacketSend &rArr; enc28j60Write &rArr; enc28j60SetBank &rArr; enc28j60WriteOp &rArr; SPI1_ReadWrite
+</UL>
+<BR>[Calls]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;make_echo_reply_from_request
+</UL>
+<BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[5b]"></a>RCC_GetClocksFreq</STRONG> (Thumb, 192 bytes, Stack size 12 bytes, stm32f10x_rcc.o(i.RCC_GetClocksFreq))
+<P><STRONG><a name="[5c]"></a>RCC_APB2PeriphClockCmd</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, stm32f10x_rcc.o(i.RCC_APB2PeriphClockCmd))
+<BR><BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
+<LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Led::Led(GPIO_TypeDef*, int)
+<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Enc28j60_Init
+</UL>
+
+<P><STRONG><a name="[66]"></a>RCC_GetClocksFreq</STRONG> (Thumb, 192 bytes, Stack size 12 bytes, stm32f10x_rcc.o(i.RCC_GetClocksFreq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = RCC_GetClocksFreq
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
+<BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
 </UL>
 
-<P><STRONG><a name="[55]"></a>SPI_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f10x_spi.o(i.SPI_Cmd))
-<BR><BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Enc28j60_Init
+<P><STRONG><a name="[57]"></a>SPI1_ReadWrite</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, spi_enc28j60.o(i.SPI1_ReadWrite))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = SPI1_ReadWrite
+</UL>
+<BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_SendData
+<LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_ReceiveData
+<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_I2S_GetFlagStatus
+</UL>
+<BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60WriteOp
+<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60WriteBuffer
+<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60ReadOp
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60ReadBuffer
 </UL>
 
-<P><STRONG><a name="[50]"></a>SPI_Enc28j60_Init</STRONG> (Thumb, 148 bytes, Stack size 32 bytes, spi_enc28j60.o(i.SPI_Enc28j60_Init))
+<P><STRONG><a name="[60]"></a>SPI_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f10x_spi.o(i.SPI_Cmd))
+<BR><BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Enc28j60_Init
+</UL>
+
+<P><STRONG><a name="[5b]"></a>SPI_Enc28j60_Init</STRONG> (Thumb, 148 bytes, Stack size 32 bytes, spi_enc28j60.o(i.SPI_Enc28j60_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = SPI_Enc28j60_Init &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Init
-<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Cmd
-<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
-<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+<BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Init
+<LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Cmd
+<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
+<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
+<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sys_Init()
+<BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sys_Init()
 </UL>
 
-<P><STRONG><a name="[54]"></a>SPI_Init</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, stm32f10x_spi.o(i.SPI_Init))
+<P><STRONG><a name="[58]"></a>SPI_I2S_GetFlagStatus</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, stm32f10x_spi.o(i.SPI_I2S_GetFlagStatus))
+<BR><BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI1_ReadWrite
+</UL>
+
+<P><STRONG><a name="[5a]"></a>SPI_I2S_ReceiveData</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f10x_spi.o(i.SPI_I2S_ReceiveData))
+<BR><BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI1_ReadWrite
+</UL>
+
+<P><STRONG><a name="[59]"></a>SPI_I2S_SendData</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f10x_spi.o(i.SPI_I2S_SendData))
+<BR><BR>[Called By]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI1_ReadWrite
+</UL>
+
+<P><STRONG><a name="[5f]"></a>SPI_Init</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, stm32f10x_spi.o(i.SPI_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = SPI_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Enc28j60_Init
+<BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Enc28j60_Init
 </UL>
 
-<P><STRONG><a name="[63]"></a>SysTick_CLKSourceConfig</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, misc.o(i.SysTick_CLKSourceConfig))
-<BR><BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_init
+<P><STRONG><a name="[71]"></a>SysTick_CLKSourceConfig</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, misc.o(i.SysTick_CLKSourceConfig))
+<BR><BR>[Called By]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_init
 </UL>
 
 <P><STRONG><a name="[47]"></a>SystemInit</STRONG> (Thumb, 78 bytes, Stack size 8 bytes, system_stm32f10x.o(i.SystemInit))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = SystemInit &rArr; SetSysClock &rArr; SetSysClockTo72
 </UL>
-<BR>[Calls]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
+<BR>[Calls]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(.text)
 </UL>
 <P><STRONG><a name="[2f]"></a>USART1_IRQHandler</STRONG> (Thumb, 122 bytes, Stack size 8 bytes, usart.o(i.USART1_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = USART1_IRQHandler &rArr; USART_GetITStatus
 </UL>
-<BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ReceiveData
-<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetITStatus
+<BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ReceiveData
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetITStatus
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[68]"></a>USART_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_Cmd))
-<BR><BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
+<P><STRONG><a name="[82]"></a>USART_Cmd</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_Cmd))
+<BR><BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
 </UL>
 
-<P><STRONG><a name="[58]"></a>USART_GetITStatus</STRONG> (Thumb, 84 bytes, Stack size 16 bytes, stm32f10x_usart.o(i.USART_GetITStatus))
+<P><STRONG><a name="[63]"></a>USART_GetITStatus</STRONG> (Thumb, 84 bytes, Stack size 16 bytes, stm32f10x_usart.o(i.USART_GetITStatus))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = USART_GetITStatus
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
 
-<P><STRONG><a name="[67]"></a>USART_ITConfig</STRONG> (Thumb, 74 bytes, Stack size 20 bytes, stm32f10x_usart.o(i.USART_ITConfig))
+<P><STRONG><a name="[81]"></a>USART_ITConfig</STRONG> (Thumb, 74 bytes, Stack size 20 bytes, stm32f10x_usart.o(i.USART_ITConfig))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = USART_ITConfig
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
+<BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
 </UL>
 
-<P><STRONG><a name="[5a]"></a>USART_Init</STRONG> (Thumb, 210 bytes, Stack size 56 bytes, stm32f10x_usart.o(i.USART_Init))
+<P><STRONG><a name="[65]"></a>USART_Init</STRONG> (Thumb, 210 bytes, Stack size 56 bytes, stm32f10x_usart.o(i.USART_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 68<LI>Call Chain = USART_Init &rArr; RCC_GetClocksFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetClocksFreq
+<BR>[Calls]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_GetClocksFreq
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
+<BR>[Called By]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
 </UL>
 
-<P><STRONG><a name="[59]"></a>USART_ReceiveData</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_ReceiveData))
+<P><STRONG><a name="[64]"></a>USART_ReceiveData</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f10x_usart.o(i.USART_ReceiveData))
 <BR><BR>[Called By]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
 
-<P><STRONG><a name="[5c]"></a>Sys_Init()</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, main.o(i._Z8Sys_Initv))
+<P><STRONG><a name="[67]"></a>Sys_Init()</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, main.o(i._Z8Sys_Initv))
 <BR><BR>[Stack]<UL><LI>Max Depth = 124<LI>Call Chain = Sys_Init() &rArr; SerialPort::SerialPort(int) &rArr; uart_init &rArr; USART_Init &rArr; RCC_GetClocksFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_init
-<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SerialPort::SerialPort(int)
-<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Enc28j60_Init
+<BR>[Calls]<UL><LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_ip_arp_udp_tcp
+<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60PhyWrite
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60Init
+<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;delay_init
+<LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SerialPort::SerialPort(int)
+<LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_Enc28j60_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[5e]"></a>SerialPort::SerialPort(int)</STRONG> (Thumb, 16 bytes, Stack size 16 bytes, serialport.o(i._ZN10SerialPortC1Ei))
+<P><STRONG><a name="[69]"></a>SerialPort::SerialPort(int)</STRONG> (Thumb, 16 bytes, Stack size 16 bytes, serialport.o(i._ZN10SerialPortC1Ei))
 <BR><BR>[Stack]<UL><LI>Max Depth = 116<LI>Call Chain = SerialPort::SerialPort(int) &rArr; uart_init &rArr; USART_Init &rArr; RCC_GetClocksFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
+<BR>[Calls]<UL><LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sys_Init()
+<BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sys_Init()
 </UL>
 
-<P><STRONG><a name="[70]"></a>SerialPort::SerialPort__sub_object(int)</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, serialport.o(i._ZN10SerialPortC1Ei), UNUSED)
+<P><STRONG><a name="[8a]"></a>SerialPort::SerialPort__sub_object(int)</STRONG> (Thumb, 0 bytes, Stack size 16 bytes, serialport.o(i._ZN10SerialPortC1Ei), UNUSED)
 
-<P><STRONG><a name="[64]"></a>Led::on()</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, led.o(i._ZN3Led2onEv))
+<P><STRONG><a name="[7c]"></a>Led::on()</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, led.o(i._ZN3Led2onEv))
 <BR><BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[60]"></a>Led::Led(GPIO_TypeDef*, int)</STRONG> (Thumb, 146 bytes, Stack size 24 bytes, led.o(i._ZN3LedC1EP12GPIO_TypeDefi))
+<P><STRONG><a name="[6e]"></a>Led::Led(GPIO_TypeDef*, int)</STRONG> (Thumb, 146 bytes, Stack size 24 bytes, led.o(i._ZN3LedC1EP12GPIO_TypeDefi))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = Led::Led(GPIO_TypeDef*, int) &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+<BR>[Calls]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
+<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__sti___8_main_cpp_DS0
 </UL>
 
-<P><STRONG><a name="[71]"></a>Led::Led__sub_object(GPIO_TypeDef*, int)</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, led.o(i._ZN3LedC1EP12GPIO_TypeDefi), UNUSED)
+<P><STRONG><a name="[8b]"></a>Led::Led__sub_object(GPIO_TypeDef*, int)</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, led.o(i._ZN3LedC1EP12GPIO_TypeDefi), UNUSED)
 
-<P><STRONG><a name="[61]"></a>__0printf$bare</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, printfb.o(i.__0printf$bare), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
+<P><STRONG><a name="[6f]"></a>__0printf$bare</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, printfb.o(i.__0printf$bare), UNUSED)
+<BR><BR>[Calls]<UL><LI><a href="#[70]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
-<P><STRONG><a name="[72]"></a>__1printf$bare</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, printfb.o(i.__0printf$bare), UNUSED)
+<P><STRONG><a name="[8c]"></a>__1printf$bare</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, printfb.o(i.__0printf$bare), UNUSED)
 
-<P><STRONG><a name="[65]"></a>__2printf</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, printfb.o(i.__0printf$bare))
+<P><STRONG><a name="[7d]"></a>__2printf</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, printfb.o(i.__0printf$bare))
 <BR><BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[73]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+<P><STRONG><a name="[8d]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
 
-<P><STRONG><a name="[74]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+<P><STRONG><a name="[8e]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
 
-<P><STRONG><a name="[75]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+<P><STRONG><a name="[8f]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[5d]"></a>delay_init</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, delay.o(i.delay_init))
+<P><STRONG><a name="[7b]"></a>checksum</STRONG> (Thumb, 84 bytes, Stack size 12 bytes, ip_arp_udp_tcp.o(i.checksum))
+<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = checksum
+</UL>
+<BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fill_ip_hdr_checksum
+</UL>
+
+<P><STRONG><a name="[68]"></a>delay_init</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, delay.o(i.delay_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = delay_init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_CLKSourceConfig
+<BR>[Calls]<UL><LI><a href="#[71]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_CLKSourceConfig
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sys_Init()
+<BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sys_Init()
+</UL>
+
+<P><STRONG><a name="[6a]"></a>enc28j60Init</STRONG> (Thumb, 318 bytes, Stack size 8 bytes, enc28j60.o(i.enc28j60Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = enc28j60Init &rArr; enc28j60PhyWrite &rArr; enc28j60Write &rArr; enc28j60SetBank &rArr; enc28j60WriteOp &rArr; SPI1_ReadWrite
+</UL>
+<BR>[Calls]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60WriteOp
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60Write
+<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60SetBank
+<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60PhyWrite
+</UL>
+<BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sys_Init()
+</UL>
+
+<P><STRONG><a name="[51]"></a>enc28j60PacketReceive</STRONG> (Thumb, 188 bytes, Stack size 24 bytes, enc28j60.o(i.enc28j60PacketReceive))
+<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = enc28j60PacketReceive &rArr; enc28j60Write &rArr; enc28j60SetBank &rArr; enc28j60WriteOp &rArr; SPI1_ReadWrite
+</UL>
+<BR>[Calls]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60WriteOp
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60Write
+<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60ReadOp
+<LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60ReadBuffer
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60Read
+</UL>
+<BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IPandARP_Serve
+</UL>
+
+<P><STRONG><a name="[78]"></a>enc28j60PacketSend</STRONG> (Thumb, 102 bytes, Stack size 16 bytes, enc28j60.o(i.enc28j60PacketSend))
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = enc28j60PacketSend &rArr; enc28j60Write &rArr; enc28j60SetBank &rArr; enc28j60WriteOp &rArr; SPI1_ReadWrite
+</UL>
+<BR>[Calls]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60WriteOp
+<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60WriteBuffer
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60Write
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60Read
+</UL>
+<BR>[Called By]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;make_echo_reply_from_request
+<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;make_arp_answer_from_request
+</UL>
+
+<P><STRONG><a name="[6b]"></a>enc28j60PhyWrite</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, enc28j60.o(i.enc28j60PhyWrite))
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = enc28j60PhyWrite &rArr; enc28j60Write &rArr; enc28j60SetBank &rArr; enc28j60WriteOp &rArr; SPI1_ReadWrite
+</UL>
+<BR>[Calls]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60Write
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60Read
+</UL>
+<BR>[Called By]<UL><LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60Init
+<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sys_Init()
+</UL>
+
+<P><STRONG><a name="[75]"></a>enc28j60Read</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, enc28j60.o(i.enc28j60Read))
+<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = enc28j60Read &rArr; enc28j60SetBank &rArr; enc28j60WriteOp &rArr; SPI1_ReadWrite
+</UL>
+<BR>[Calls]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60SetBank
+<LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60ReadOp
+</UL>
+<BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60PacketSend
+<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60PacketReceive
+<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60PhyWrite
+</UL>
+
+<P><STRONG><a name="[77]"></a>enc28j60ReadBuffer</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, enc28j60.o(i.enc28j60ReadBuffer))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = enc28j60ReadBuffer &rArr; SPI1_ReadWrite
+</UL>
+<BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI1_ReadWrite
+</UL>
+<BR>[Called By]<UL><LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60PacketReceive
+</UL>
+
+<P><STRONG><a name="[76]"></a>enc28j60ReadOp</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, enc28j60.o(i.enc28j60ReadOp))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = enc28j60ReadOp &rArr; SPI1_ReadWrite
+</UL>
+<BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI1_ReadWrite
+</UL>
+<BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60Read
+<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60PacketReceive
+</UL>
+
+<P><STRONG><a name="[74]"></a>enc28j60SetBank</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, enc28j60.o(i.enc28j60SetBank))
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = enc28j60SetBank &rArr; enc28j60WriteOp &rArr; SPI1_ReadWrite
+</UL>
+<BR>[Calls]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60WriteOp
+</UL>
+<BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60Write
+<LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60Read
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60Init
+</UL>
+
+<P><STRONG><a name="[73]"></a>enc28j60Write</STRONG> (Thumb, 24 bytes, Stack size 16 bytes, enc28j60.o(i.enc28j60Write))
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = enc28j60Write &rArr; enc28j60SetBank &rArr; enc28j60WriteOp &rArr; SPI1_ReadWrite
+</UL>
+<BR>[Calls]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60WriteOp
+<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60SetBank
+</UL>
+<BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60PacketSend
+<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60PacketReceive
+<LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60PhyWrite
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60Init
+</UL>
+
+<P><STRONG><a name="[79]"></a>enc28j60WriteBuffer</STRONG> (Thumb, 44 bytes, Stack size 16 bytes, enc28j60.o(i.enc28j60WriteBuffer))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = enc28j60WriteBuffer &rArr; SPI1_ReadWrite
+</UL>
+<BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI1_ReadWrite
+</UL>
+<BR>[Called By]<UL><LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60PacketSend
+</UL>
+
+<P><STRONG><a name="[72]"></a>enc28j60WriteOp</STRONG> (Thumb, 52 bytes, Stack size 24 bytes, enc28j60.o(i.enc28j60WriteOp))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = enc28j60WriteOp &rArr; SPI1_ReadWrite
+</UL>
+<BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI1_ReadWrite
+</UL>
+<BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60Write
+<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60SetBank
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60PacketSend
+<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60PacketReceive
+<LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60Init
+</UL>
+
+<P><STRONG><a name="[52]"></a>eth_type_is_arp_and_my_ip</STRONG> (Thumb, 64 bytes, Stack size 8 bytes, ip_arp_udp_tcp.o(i.eth_type_is_arp_and_my_ip))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = eth_type_is_arp_and_my_ip
+</UL>
+<BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IPandARP_Serve
+</UL>
+
+<P><STRONG><a name="[54]"></a>eth_type_is_ip_and_my_ip</STRONG> (Thumb, 72 bytes, Stack size 8 bytes, ip_arp_udp_tcp.o(i.eth_type_is_ip_and_my_ip))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = eth_type_is_ip_and_my_ip
+</UL>
+<BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IPandARP_Serve
+</UL>
+
+<P><STRONG><a name="[7a]"></a>fill_ip_hdr_checksum</STRONG> (Thumb, 44 bytes, Stack size 12 bytes, ip_arp_udp_tcp.o(i.fill_ip_hdr_checksum))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = fill_ip_hdr_checksum &rArr; checksum
+</UL>
+<BR>[Calls]<UL><LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;checksum
+</UL>
+<BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;make_ip
 </UL>
 
 <P><STRONG><a name="[49]"></a>fputc</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, usart.o(i.fputc))
 <BR>[Address Reference Count : 1]<UL><LI> printfb.o(i.__0printf$bare)
 </UL>
-<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 132<LI>Call Chain = main &rArr; Sys_Init() &rArr; SerialPort::SerialPort(int) &rArr; uart_init &rArr; USART_Init &rArr; RCC_GetClocksFreq
+<P><STRONG><a name="[6c]"></a>init_ip_arp_udp_tcp</STRONG> (Thumb, 46 bytes, Stack size 12 bytes, ip_arp_udp_tcp.o(i.init_ip_arp_udp_tcp))
+<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = init_ip_arp_udp_tcp
 </UL>
-<BR>[Calls]<UL><LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Led::on()
-<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sys_Init()
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+<BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sys_Init()
+</UL>
+
+<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 124<LI>Call Chain = main &rArr; Sys_Init() &rArr; SerialPort::SerialPort(int) &rArr; uart_init &rArr; USART_Init &rArr; RCC_GetClocksFreq
+</UL>
+<BR>[Calls]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Led::on()
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ping_Serve
+<LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IPandARP_Serve
+<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Sys_Init()
+<LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
-<P><STRONG><a name="[5f]"></a>uart_init</STRONG> (Thumb, 152 bytes, Stack size 32 bytes, usart.o(i.uart_init))
+<P><STRONG><a name="[53]"></a>make_arp_answer_from_request</STRONG> (Thumb, 92 bytes, Stack size 16 bytes, ip_arp_udp_tcp.o(i.make_arp_answer_from_request))
+<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = make_arp_answer_from_request &rArr; enc28j60PacketSend &rArr; enc28j60Write &rArr; enc28j60SetBank &rArr; enc28j60WriteOp &rArr; SPI1_ReadWrite
+</UL>
+<BR>[Calls]<UL><LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;make_eth
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60PacketSend
+</UL>
+<BR>[Called By]<UL><LI><a href="#[50]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IPandARP_Serve
+</UL>
+
+<P><STRONG><a name="[56]"></a>make_echo_reply_from_request</STRONG> (Thumb, 62 bytes, Stack size 16 bytes, ip_arp_udp_tcp.o(i.make_echo_reply_from_request))
+<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = make_echo_reply_from_request &rArr; enc28j60PacketSend &rArr; enc28j60Write &rArr; enc28j60SetBank &rArr; enc28j60WriteOp &rArr; SPI1_ReadWrite
+</UL>
+<BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;make_ip
+<LI><a href="#[7e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;make_eth
+<LI><a href="#[78]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enc28j60PacketSend
+</UL>
+<BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ping_Serve
+</UL>
+
+<P><STRONG><a name="[7e]"></a>make_eth</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, ip_arp_udp_tcp.o(i.make_eth))
+<BR><BR>[Called By]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;make_echo_reply_from_request
+<LI><a href="#[53]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;make_arp_answer_from_request
+</UL>
+
+<P><STRONG><a name="[7f]"></a>make_ip</STRONG> (Thumb, 44 bytes, Stack size 12 bytes, ip_arp_udp_tcp.o(i.make_ip))
+<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = make_ip &rArr; fill_ip_hdr_checksum &rArr; checksum
+</UL>
+<BR>[Calls]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fill_ip_hdr_checksum
+</UL>
+<BR>[Called By]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;make_echo_reply_from_request
+</UL>
+
+<P><STRONG><a name="[6d]"></a>uart_init</STRONG> (Thumb, 152 bytes, Stack size 32 bytes, usart.o(i.uart_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 100<LI>Call Chain = uart_init &rArr; USART_Init &rArr; RCC_GetClocksFreq
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
-<LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
-<LI><a href="#[51]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
-<LI><a href="#[52]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
+<BR>[Calls]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Init
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ITConfig
+<LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_Cmd
+<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
+<LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_Init
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NVIC_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SerialPort::SerialPort(int)
+<BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SerialPort::SerialPort(int)
 </UL>
 <P>
 <H3>
@@ -586,26 +814,26 @@ Local Symbols
 <P><STRONG><a name="[4a]"></a>__sti___8_main_cpp_DS0</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, main.o(i.__sti___8_main_cpp_DS0))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = __sti___8_main_cpp_DS0 &rArr; Led::Led(GPIO_TypeDef*, int) &rArr; GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Led::Led(GPIO_TypeDef*, int)
+<BR>[Calls]<UL><LI><a href="#[6e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Led::Led(GPIO_TypeDef*, int)
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.init_array)
 </UL>
-<P><STRONG><a name="[56]"></a>SetSysClock</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, system_stm32f10x.o(i.SetSysClock))
+<P><STRONG><a name="[61]"></a>SetSysClock</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, system_stm32f10x.o(i.SetSysClock))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = SetSysClock &rArr; SetSysClockTo72
 </UL>
-<BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClockTo72
+<BR>[Calls]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClockTo72
 </UL>
 <BR>[Called By]<UL><LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
 </UL>
 
-<P><STRONG><a name="[57]"></a>SetSysClockTo72</STRONG> (Thumb, 214 bytes, Stack size 12 bytes, system_stm32f10x.o(i.SetSysClockTo72))
+<P><STRONG><a name="[62]"></a>SetSysClockTo72</STRONG> (Thumb, 214 bytes, Stack size 12 bytes, system_stm32f10x.o(i.SetSysClockTo72))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = SetSysClockTo72
 </UL>
-<BR>[Called By]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
+<BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SetSysClock
 </UL>
 
-<P><STRONG><a name="[62]"></a>_printf_core</STRONG> (Thumb, 34 bytes, Stack size 24 bytes, printfb.o(i._printf_core), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0printf$bare
+<P><STRONG><a name="[70]"></a>_printf_core</STRONG> (Thumb, 34 bytes, Stack size 24 bytes, printfb.o(i._printf_core), UNUSED)
+<BR><BR>[Called By]<UL><LI><a href="#[6f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0printf$bare
 </UL>
 <P>
 <H3>

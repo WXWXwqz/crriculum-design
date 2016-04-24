@@ -16,13 +16,27 @@ void Sys_Init(void)
   delay_init();		
   SerialPort usart1(115200);
   SPI_Enc28j60_Init();// ENC28J60 SPI 接口初始化 
+  enc28j60Init();   
+	enc28j60PhyWrite(PHLCON,0x476);	
+	init_ip_arp_udp_tcp(mymac,myip,80);	
 }
-
 int main(void)
 {
 	Sys_Init();
 	DS1.on();
 	printf("helo world");
-	return 0;
+	while(1)
+	{
+		if(IPandARP_Serve())
+		{
+			continue;
+		}
+		if(Ping_Serve())
+		{
+			continue;
+		}
+	}
+	
 }
+
 

@@ -32,9 +32,14 @@
 .\objects\main.o: f:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\StdPeriph_Driver\inc\stm32f10x_wwdg.h
 .\objects\main.o: f:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\StdPeriph_Driver\inc\misc.h
 .\objects\main.o: .\Class\led.h
+.\objects\main.o: .\hard\spi_enc28j60.h
 .\objects\main.o: .\SYSTEM\delay.h
 .\objects\main.o: F:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\main.o: .\SYSTEM\usart.h
 .\objects\main.o: .\SYSTEM\sys.h
 .\objects\main.o: .\Class\serialport.h
-.\objects\main.o: .\hard\spi_enc28j60.h
+.\objects\main.o: .\drive\enc28j60.h
+.\objects\main.o: .\drive\ip_arp_udp_tcp.h
+.\objects\main.o: .\drive\net.h
+.\objects\main.o: F:\Keil\ARM\ARMCC\Bin\..\include\string.h
+.\objects\main.o: .\app\netserve.h
