@@ -28,12 +28,15 @@ extern "C"
 
 #define BUFFER_SIZE 1500
 extern unsigned char Packet_Buf[BUFFER_SIZE+1];
-
+ // udp 监听端口号，即本地(开发板)端口号
+extern unsigned int myudpport ; 
 
 
 
 int Ping_Serve(void);	
 int IPandARP_Serve(void);
+int UDP_Serve(void);
+void SendPacket(void);
 	#ifdef __cplusplus
 }
 #endif

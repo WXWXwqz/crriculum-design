@@ -13,7 +13,10 @@
   ******************************************************************************
   */
 #include "netserve.h"
+#include "stdio.h"
 
+/* udp 监听端口号，即本地(开发板)端口号 */
+unsigned int myudpport =1200; 
 unsigned char Packet_Buf[BUFFER_SIZE+1];
 int IPandARP_Serve(void)
 {
@@ -48,11 +51,36 @@ int Ping_Serve(void)
 {
 		if(Packet_Buf[IP_PROTO_P]==IP_PROTO_ICMP_V && Packet_Buf[ICMP_TYPE_P]==ICMP_TYPE_ECHOREQUEST_V)
 		{
-				// a ping packet, let's send pong  DOS 下的 ping 命令包				  
+				// a ping packet, let's send pong  DOS 下的 ping 命令包		
+//				printf("*******ping packet********************\n");
+//			  SendPacket();
+//			  printf("*******ping packet********************\n");
 				make_echo_reply_from_request(Packet_Buf, Packet_Len); 	
 				return 1;
 		}	
 		return 0;
 }
-
+int UDP_Serve(void)
+{
+	unsigned int payloadlen = 0;
+	char *str="hello world";
+	if (Packet_Buf[IP_PROTO_P]==IP_PROTO_UDP_V&&Packet_Buf[UDP_DST_PORT_H_P]==4&&Packet_Buf[UDP_DST_PORT_L_P]==0xb0)
+	{
+			payloadlen=	  Packet_Buf[UDP_LEN_H_P];
+			payloadlen=payloadlen<<8;
+			payloadlen=(payloadlen+Packet_Buf[UDP_LEN_L_P])-UDP_HEADER_LEN;
+			make_udp_reply_from_request(Packet_Buf,str,strlen(str),myudpport);
+	    return 1;
+	}
+/*----------------------------------------udp end -----------------------------------------------*/
+ 	return 0;
+}
+void SendPacket(void)
+{
+	int i;
+	for(i=0;i<Packet_Len;i++)
+	{
+		printf("%x ",Packet_Buf[i]);
+	}
+}
 

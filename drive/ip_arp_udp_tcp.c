@@ -331,11 +331,12 @@ void make_udp_reply_from_request(unsigned char *buf,char *data,unsigned int data
 {
     unsigned int i=0;
     unsigned  int ck;
+	  int data_cnt=0;
     make_eth(buf);
-    //if (datalen>220)
-    //	{
-    //    datalen=220;
-    //	}
+    if (datalen>220)
+		{
+			datalen=220;
+		}
     
     // total length field in the IP header must be set:
     i= IP_HEADER_LEN+UDP_HEADER_LEN+datalen;
@@ -352,10 +353,10 @@ void make_udp_reply_from_request(unsigned char *buf,char *data,unsigned int data
     buf[UDP_CHECKSUM_H_P]=0;
     buf[UDP_CHECKSUM_L_P]=0;
     // copy the data:
-    while(i<datalen)
+    while(data_cnt<datalen)
     {
-        buf[UDP_DATA_P+i]=data[i];
-        i++;
+        buf[UDP_DATA_P+data_cnt]=data[data_cnt];
+        data_cnt++;
     }
     ck=checksum(&buf[IP_SRC_P], 16 + datalen,1);
     buf[UDP_CHECKSUM_H_P]=ck>>8;

@@ -332,7 +332,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F10X_HD,</Define>
               <Undefine></Undefine>
-              <IncludePath>F:\Keil\ARM\CMSIS\RTOS;.\SYSTEM;.\Class;.\USER;.\hard;.\drive</IncludePath>
+              <IncludePath>F:\Keil\ARM\CMSIS\RTOS;.\SYSTEM;.\Class;.\USER;.\hard;.\drive;.\app</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -474,6 +474,21 @@
               <FileName>ip_arp_udp_tcp.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\drive\ip_arp_udp_tcp.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>app</GroupName>
+          <Files>
+            <File>
+              <FileName>netserve.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\app\netserve.h</FilePath>
+            </File>
+            <File>
+              <FileName>netserve.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\netserve.c</FilePath>
             </File>
           </Files>
         </Group>
