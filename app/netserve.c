@@ -14,9 +14,9 @@
   */
 #include "netserve.h"
 #include "stdio.h"
-
+#include "delay.h"
 /* udp 监听端口号，即本地(开发板)端口号 */
-unsigned int myudpport =1200; 
+unsigned int myudpport =1202; 
 unsigned char Packet_Buf[BUFFER_SIZE+1];
 int IPandARP_Serve(void)
 {
@@ -63,24 +63,30 @@ int Ping_Serve(void)
 int UDP_Serve(void)
 {
 	unsigned int payloadlen = 0;
-	char *str="hello world";
-	if (Packet_Buf[IP_PROTO_P]==IP_PROTO_UDP_V&&Packet_Buf[UDP_DST_PORT_H_P]==4&&Packet_Buf[UDP_DST_PORT_L_P]==0xb0)
+	char *str="hello world\n";
+//	printf("Packet_Buf[IP_PROTO_P]=%x\n",Packet_Buf[IP_PROTO_P]);
+//	printf("Packet_Buf[UDP_DST_PORT_L_P]=%x",Packet_Buf[UDP_DST_PORT_L_P]);
+//	printf("Packet_Buf[UDP_DST_PORT_H_P]=%x",Packet_Buf[UDP_DST_PORT_H_P]);
+	if (Packet_Buf[IP_PROTO_P]==IP_PROTO_UDP_V&&Packet_Buf[UDP_DST_PORT_H_P]==((myudpport&0xff00)>>8)&&Packet_Buf[UDP_DST_PORT_L_P]==(myudpport&0x00ff))
 	{
-			payloadlen=	  Packet_Buf[UDP_LEN_H_P];
-			payloadlen=payloadlen<<8;
-			payloadlen=(payloadlen+Packet_Buf[UDP_LEN_L_P])-UDP_HEADER_LEN;
-			make_udp_reply_from_request(Packet_Buf,str,strlen(str),myudpport);
-	    return 1;
+		printf("********UDP Packet**************\n");
+		SendPacket();
+		printf("\n********************************");
+		payloadlen=	Packet_Buf[UDP_LEN_H_P];
+		payloadlen=payloadlen<<8;
+		payloadlen=(payloadlen+Packet_Buf[UDP_LEN_L_P])-UDP_HEADER_LEN;
+		make_udp_reply_from_request(Packet_Buf,str,strlen(str),myudpport);
+		return 1;
 	}
-/*----------------------------------------udp end -----------------------------------------------*/
  	return 0;
 }
 void SendPacket(void)
 {
 	int i;
-	for(i=0;i<Packet_Len;i++)
+	for(i=UDP_DATA_P;i<UDP_DATA_P+11;i++)
 	{
-		printf("%x ",Packet_Buf[i]);
+		printf("%c",Packet_Buf[i]);
+		delay_ms(1);
 	}
 }
 

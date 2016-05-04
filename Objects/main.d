@@ -43,3 +43,10 @@
 .\objects\main.o: .\drive\net.h
 .\objects\main.o: F:\Keil\ARM\ARMCC\Bin\..\include\string.h
 .\objects\main.o: .\app\netserve.h
+.\objects\main.o: .\hard\lcd.h
+.\objects\main.o: F:\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
+.\objects\main.o: .\hard\touch.h
+.\objects\main.o: .\hard\key.h
+.\objects\main.o: .\hard\bsp.h
+.\objects\main.o: .\hard\eeprom.h
+.\objects\main.o: .\hard\time.h

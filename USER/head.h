@@ -10,6 +10,11 @@
 #include "net.h"
 #include "string.h"
 #include "netserve.h"
+#include "lcd.h"
+#include "touch.h"
+#include "key.h"
+#include "bsp.h"
+#include "time.h"
 extern Led DS0;
 
 

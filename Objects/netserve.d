@@ -36,3 +36,4 @@
 .\objects\netserve.o: f:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\StdPeriph_Driver\inc\misc.h
 .\objects\netserve.o: F:\Keil\ARM\ARMCC\Bin\..\include\string.h
 .\objects\netserve.o: F:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
+.\objects\netserve.o: .\SYSTEM\delay.h

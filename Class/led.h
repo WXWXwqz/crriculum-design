@@ -13,9 +13,11 @@ class Led
 	private:
 		GPIO_TypeDef *Port;
 		uint32_t Pin;
+	  bool sta;
 	public:		
 		Led(GPIO_TypeDef *,int);
 		void on(void);
+	  void overturn(void);
 		void off(void);
 };
 #ifdef __cplusplus

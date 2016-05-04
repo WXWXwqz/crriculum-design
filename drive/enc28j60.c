@@ -20,7 +20,7 @@ static unsigned char Enc28j60Bank;
 static unsigned int NextPacketPtr;
 /* mac地址和ip地址在局域网内必须唯一，否则将与其他主机冲突，导致连接不成功 */
 unsigned char mymac[6] = {0x54,0x55,0x58,0x10,0x00,0x24};
-unsigned char myip[4] = {192,168,1,17};
+unsigned char myip[4] = {192,168,1,19};
 int Packet_Len =0;
 unsigned char enc28j60ReadOp(unsigned char op, unsigned char address)
 {

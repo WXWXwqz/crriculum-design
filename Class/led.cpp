@@ -26,14 +26,28 @@ Led::Led(GPIO_TypeDef *port,int pin)
 	GPIO_InitStruct.GPIO_Pin=pin;
 	GPIO_InitStruct.GPIO_Speed=GPIO_Speed_50MHz;
 	GPIO_Init(port,&GPIO_InitStruct);
+	off();
 }
 void Led::on(void)
 {
-	Port->BRR=Pin;
+	Port->BSRR=Pin;
 }
 
 void Led::off(void)
 {
-	Port->BSRR=Pin;
+	Port->BRR=Pin;
+}
+void Led::overturn(void)
+{
+	if(sta)
+	{
+		off();
+		sta=0;
+	}
+	else
+	{
+		on();
+		sta=1;
+	}
 }
 
