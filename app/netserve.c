@@ -16,7 +16,6 @@
 #include "stdio.h"
 #include "delay.h"
 /* udp 监听端口号，即本地(开发板)端口号 */
-unsigned int myudpport =1202; 
 unsigned char Packet_Buf[BUFFER_SIZE+1];
 int IPandARP_Serve(void)
 {
@@ -64,9 +63,7 @@ int UDP_Serve(void)
 {
 	unsigned int payloadlen = 0;
 	char *str="hello world\n";
-//	printf("Packet_Buf[IP_PROTO_P]=%x\n",Packet_Buf[IP_PROTO_P]);
-//	printf("Packet_Buf[UDP_DST_PORT_L_P]=%x",Packet_Buf[UDP_DST_PORT_L_P]);
-//	printf("Packet_Buf[UDP_DST_PORT_H_P]=%x",Packet_Buf[UDP_DST_PORT_H_P]);
+  
 	if (Packet_Buf[IP_PROTO_P]==IP_PROTO_UDP_V&&Packet_Buf[UDP_DST_PORT_H_P]==((myudpport&0xff00)>>8)&&Packet_Buf[UDP_DST_PORT_L_P]==(myudpport&0x00ff))
 	{
 		printf("********UDP Packet**************\n");

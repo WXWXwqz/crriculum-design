@@ -16,6 +16,7 @@
 ".\objects\enc28j60.o"
 ".\objects\ip_arp_udp_tcp.o"
 ".\objects\netserve.o"
+".\objects\dis.o"
 ".\objects\startup_stm32f10x_hd.o"
 ".\objects\system_stm32f10x.o"
 ".\objects\stm32f10x_adc.o"

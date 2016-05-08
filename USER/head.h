@@ -15,6 +15,7 @@
 #include "key.h"
 #include "bsp.h"
 #include "time.h"
+#include "dis.h"
 extern Led DS0;
 
 

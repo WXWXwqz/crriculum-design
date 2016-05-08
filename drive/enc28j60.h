@@ -258,6 +258,7 @@ extern "C"
 #define 	ENC28J60_CSL()		GPIOA->BRR = ENC28J60_CS;					/* 拉低片选 */
 #define 	ENC28J60_CSH()		GPIOA->BSRR = ENC28J60_CS;				/* 拉高片选 */
 
+
 extern unsigned char mymac[6] ;
 extern unsigned char myip[4];
 extern int Packet_Len;

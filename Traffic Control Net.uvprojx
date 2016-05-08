@@ -132,12 +132,12 @@
             <UseExternalTool>0</UseExternalTool>
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
-            <Capability>0</Capability>
-            <DriverSelection>-1</DriverSelection>
+            <Capability>1</Capability>
+            <DriverSelection>4096</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -322,7 +322,7 @@
             <wLevel>2</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
-            <uC99>0</uC99>
+            <uC99>1</uC99>
             <useXO>0</useXO>
             <v6Lang>1</v6Lang>
             <v6LangP>1</v6LangP>
@@ -330,7 +330,7 @@
             <vShortWch>1</vShortWch>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>USE_STDPERIPH_DRIVER,STM32F10X_HD,</Define>
+              <Define>USE_STDPERIPH_DRIVER,STM32F10X_HD,MAX_MAIN</Define>
               <Undefine></Undefine>
               <IncludePath>F:\Keil\ARM\CMSIS\RTOS;.\SYSTEM;.\Class;.\USER;.\hard;.\drive;.\app</IncludePath>
             </VariousControls>
@@ -495,6 +495,11 @@
               <FileType>1</FileType>
               <FilePath>.\hard\key.c</FilePath>
             </File>
+            <File>
+              <FileName>time.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\hard\time.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -534,6 +539,16 @@
               <FileName>netserve.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\app\netserve.c</FilePath>
+            </File>
+            <File>
+              <FileName>dis.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\app\dis.c</FilePath>
+            </File>
+            <File>
+              <FileName>dis.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\app\dis.h</FilePath>
             </File>
           </Files>
         </Group>

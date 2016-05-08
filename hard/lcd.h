@@ -103,7 +103,8 @@ void LCD_ShowChar(u16 x,u16 y,u8 num,u8 size,u8 mode);						//显示一个字符
 void LCD_ShowNum(u16 x,u16 y,u32 num,u8 len,u8 size);  						//显示一个数字
 void LCD_ShowxNum(u16 x,u16 y,u32 num,u8 len,u8 size,u8 mode);				//显示 数字
 void LCD_ShowString(u16 x,u16 y,u16 width,u16 height,u8 size,char *p);		//显示一个字符串,12/16字体
-
+void LCD_ShowChinese(u16 x,u16 y,u8 distance,char * p);
+void LCD_ShowPicture(u16 x,u16 y);
 void LCD_WriteReg(u16 LCD_Reg, u16 LCD_RegValue);
 u16 LCD_ReadReg(u16 LCD_Reg);
 void LCD_WriteRAM_Prepare(void);
@@ -112,6 +113,9 @@ void LCD_Scan_Dir(u8 dir);							//设置屏扫描方向
 void LCD_Display_Dir(u8 dir);						//设置屏幕显示方向
 void LCD_Set_Window(u16 sx,u16 sy,u16 width,u16 height);//设置窗口	
 void Load_Drow_Dialog(void);
+u8 Find_Font(char * p);
+void LCD_Show_Main_Page(void);
+#define CHINESE_NUM 35
 //9320/9325 LCD寄存器  
 #define R0             0x00
 #define R1             0x01

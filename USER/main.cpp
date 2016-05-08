@@ -9,8 +9,24 @@
   *************************************************************************
   */
 #include "head.h"
+//#define MAX_ACD
+//#define MAX_MAIN
+//#define SAMLL_ACD
+#ifdef MAX_MAIN
 Led DS0(GPIOE,GPIO_Pin_5);
 Led DS1(GPIOB,GPIO_Pin_5);
+#endif
+
+#ifdef MAX_ACD
+Led DS0(GPIOE,GPIO_Pin_0);
+Led DS1(GPIOE,GPIO_Pin_2);
+#endif
+
+#ifdef SAMLL_ACD
+Led DS0(GPIOB,GPIO_Pin_8);
+Led DS1(GPIOB,GPIO_Pin_9);
+#endif
+
 void Sys_Init(void)
 {	
   delay_init();		
@@ -20,31 +36,50 @@ void Sys_Init(void)
   enc28j60Init();   
 	enc28j60PhyWrite(PHLCON,0x476);	
 	init_ip_arp_udp_tcp(mymac,myip,80);	
+	#ifdef MAX_MAIN          //触摸屏
 	LCD_Init();	
 	KEY_Init();	 
 	FLASH_Unlock();
-	EE_INIT();	
+	EE_INIT();	 
  	tp_dev.init();	
+	#endif
 	TIM3_Init();
 	
 }
-void rtp_test(void);
+
 int main(void)
 {
 	Sys_Init();
 	DS1.on();
 	printf("helo world");
-	POINT_COLOR=BLUE;//设置字体为红色 
-	LCD_ShowString(10,50,200,16,16,"QingDao Technology University");	
-	LCD_ShowString(10,70,200,16,16,"TOUCH TEST");	
-	LCD_ShowString(10,90,200,16,16,"graduate project");
-	LCD_ShowString(10,110,200,16,16,"Stored in the Flash");
-  LCD_ShowString(10,130,200,16,16,"Press S1 to Adjust");	
-	LCD_ShowNum(60,150,lcddev.id,16,16);	
-  delay_ms(1500);
+	#ifdef MAX_MAIN	
+	
+	LCD_Show_Main_Page();
+  delay_ms(1500);	
+
 	delay_ms(1500);
-	Load_Drow_Dialog();	 	
-	rtp_test(); 						//电阻屏测
+//	Load_Drow_Dialog();	 	
+//	rtp_test(); 						//电阻屏测
+	#endif
+	while(1)
+	{
+		static u8 t_cnt=0;
+		t_cnt++;
+		if(t_cnt==100)
+		{
+			DS0.overturn();
+			t_cnt=0;
+		}
+		delay_ms(10);
+		if(KEY_Scan(0)==KEY_RIGHT)	//KEY_RIGHT按下,则执行校准程序
+		{
+			LCD_Clear(WHITE);//清屏
+		  TP_Adjust();  //屏幕校准 
+			TP_Save_Adjdata();	 
+			LCD_Show_Main_Page();
+			
+		}
+	}
 	
 }
 
