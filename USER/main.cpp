@@ -9,9 +9,6 @@
   *************************************************************************
   */
 #include "head.h"
-//#define MAX_ACD
-//#define MAX_MAIN
-//#define SAMLL_ACD
 #ifdef MAX_MAIN
 Led DS0(GPIOE,GPIO_Pin_5);
 Led DS1(GPIOB,GPIO_Pin_5);
@@ -22,7 +19,7 @@ Led DS0(GPIOE,GPIO_Pin_0);
 Led DS1(GPIOE,GPIO_Pin_2);
 #endif
 
-#ifdef SAMLL_ACD
+#ifdef SMALL_ACD
 Led DS0(GPIOB,GPIO_Pin_8);
 Led DS1(GPIOB,GPIO_Pin_9);
 #endif
@@ -41,7 +38,8 @@ void Sys_Init(void)
 	KEY_Init();	 
 	FLASH_Unlock();
 	EE_INIT();	 
- 	tp_dev.init();	
+	tp_dev.init();
+	DisFlag.dis_main=1;
 	#endif
 	TIM3_Init();
 	
@@ -51,34 +49,26 @@ int main(void)
 {
 	Sys_Init();
 	DS1.on();
-	printf("helo world");
-	#ifdef MAX_MAIN	
-	
-	LCD_Show_Main_Page();
-  delay_ms(1500);	
-
-	delay_ms(1500);
-//	Load_Drow_Dialog();	 	
-//	rtp_test(); 						//电阻屏测
-	#endif
+	//printf("helo world");
+		
 	while(1)
 	{
+		#ifdef MAX_MAIN	
 		static u8 t_cnt=0;
 		t_cnt++;
-		if(t_cnt==100)
+		if(t_cnt==40)
 		{
 			DS0.overturn();
 			t_cnt=0;
 		}
-		delay_ms(10);
-		if(KEY_Scan(0)==KEY_RIGHT)	//KEY_RIGHT按下,则执行校准程序
-		{
-			LCD_Clear(WHITE);//清屏
-		  TP_Adjust();  //屏幕校准 
-			TP_Save_Adjdata();	 
-			LCD_Show_Main_Page();
-			
-		}
+		delay_ms(25);
+		Dis();
+
+	#else
+	DS0.overturn();
+	delay_ms(1000);
+	
+  #endif
 	}
 	
 }
@@ -96,15 +86,19 @@ void rtp_test(void)
 		{	
 		 	if(tp_dev.x[0]<lcddev.width&&tp_dev.y[0]<lcddev.height)
 			{	
-				if(tp_dev.x[0]>(lcddev.width-24)&&tp_dev.y[0]<16)Load_Drow_Dialog();//清除
-				else TP_Draw_Big_Point(tp_dev.x[0],tp_dev.y[0],BLUE);		//画图	  			   
+//				if(tp_dev.x[0]>(lcddev.width-24)&&tp_dev.y[0]<16)Load_Drow_Dialog();//清除
+//				else TP_Draw_Big_Point(tp_dev.x[0],tp_dev.y[0],BLUE);		//画图	  	
+      LCD_ShowNum(10,210,tp_dev.x[0],16,16);
+			LCD_ShowNum(100,230,tp_dev.y[0],16,16);
+			printf("x=%d,y=%d\n",tp_dev.x[0],tp_dev.y[0]);				
 			}
 		}else delay_ms(10);	//没有按键按下的时候 	    
 		if(key==KEY_RIGHT)	//KEY_RIGHT按下,则执行校准程序
 		{
 			LCD_Clear(WHITE);//清屏
-		    TP_Adjust();  //屏幕校准 
-			TP_Save_Adjdata();	 
+		  TP_Adjust();  //屏幕校准 
+			TP_Save_Adjdata();	
+      TP_Get_Adjdata();			
 			Load_Drow_Dialog();
 		}
 		i++;

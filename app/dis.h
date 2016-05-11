@@ -23,6 +23,8 @@ extern "C"
 #include "sys.h"
 extern T_Dis_Flag DisFlag;
 void LCD_Show_Main_Page(void);
+void LCD_Show_Login_Page(void);
+void Dis(void);
 #ifdef __cplusplus
 }
 #endif

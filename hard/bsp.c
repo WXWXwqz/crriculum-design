@@ -13,13 +13,13 @@ void EE_INIT(void)
 }
 void EE_Write_Word(int Off,int data)
 {
-	u16 temp;
+	int temp;
 	temp=data&0x0000ffff;
 	EE_WriteVariable(VirtAddVarTab[Off],temp);
-	delay_ms(100);
+	delay_ms(10);
 	temp=((data&0xffff0000)>>16);
 	EE_WriteVariable(VirtAddVarTab[Off+1],temp);
-	delay_ms(100);
+	delay_ms(10);
 }
 
 int EE_Read_Word(int Off)
@@ -30,8 +30,8 @@ int EE_Read_Word(int Off)
 	data=(u16)(temp);
 	data<<=16;
 	EE_ReadVariable(VirtAddVarTab[Off],&temp);
-	data|=temp;
-	return data;
+	data=data|(u16)temp;
+	return (int)data;
 }
 int EE_Read_Byte(int Off)
 {

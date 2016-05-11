@@ -208,10 +208,11 @@ u8 TP_Scan(u8 tp)
 //保存校准参数										    
 void TP_Save_Adjdata(void)
 {
-	long  temp;			 
+	int  temp;			 
 	//保存校正结果!		   							  
-	temp=tp_dev.xfac*10000000;//保存x校正因素      
-    EE_Write_Word(XFAC,temp);  
+	temp=tp_dev.xfac*10000000;//保存x校正因素 
+//   temp=0.063317*10000000;	
+   EE_Write_Word(XFAC,temp);  
 	temp=tp_dev.yfac*10000000;//保存y校正因素    
 //	temp=0.065317*10000000;
     EE_Write_Word(YFAC,temp); 
@@ -221,8 +222,9 @@ void TP_Save_Adjdata(void)
 	  EE_Write_Word(YOFF,tp_dev.yoff);	
 	//保存触屏类型
 	  EE_Write_Byte(TOUCHTYPE,tp_dev.touchtype);	
-	delay_ms(100);
-	
+  	delay_ms(10);
+//	  printf("Save xfac=%f\n",tp_dev.xfac);
+//	  printf("Save yfac=%f\n",tp_dev.yfac);
 	  temp=0X0A;//标记校准过了
 	  EE_Write_Byte(TOUCHFLAG,temp); 
 }
@@ -237,9 +239,9 @@ u8 TP_Get_Adjdata(void)
 	{    			
 		
 		tempfac=EE_Read_Word(XFAC);		   
-		tp_dev.xfac=(float)tempfac/10000000;//得到x校准参数
+		tp_dev.xfac=((double)tempfac)/10000000;//得到x校准参数
 		tempfac=EE_Read_Word(YFAC);			          
-		tp_dev.yfac=(float)tempfac/10000000;//得到y校准参数
+		tp_dev.yfac=((double)tempfac)/10000000;//得到y校准参数
 	    //得到x偏移量
 		tp_dev.xoff=EE_Read_Word(XOFF);			   	  
  	    //得到y偏移量
@@ -254,6 +256,8 @@ u8 TP_Get_Adjdata(void)
 			CMD_RDX=0XD0;
 			CMD_RDY=0X90;	 
 		}		 
+//		printf("Read xfac=%f\n",tp_dev.xfac);
+//	  printf("Read yfac=%f\n",tp_dev.yfac);
 		return 1;	 
 	}
 	return 0;
@@ -473,7 +477,6 @@ u8 TP_Init(void)
 			TP_Save_Adjdata();				
 		}
 		TP_Get_Adjdata();
-	
 	  return 1; 									 
 }
 

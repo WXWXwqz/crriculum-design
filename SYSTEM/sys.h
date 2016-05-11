@@ -51,6 +51,10 @@ void NVIC_Configuration(void);
 typedef struct 
 {
 	long dis_main			:1;
+	long dis_adjust		:1;
+	long dis_last		:1;
+	long dis_login   :1;
+	long dis_work   :1;
 } T_Dis_Flag;
 
 #endif
