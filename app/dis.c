@@ -245,15 +245,41 @@ void LCD_Show_WorkingSta_Page(void)
 	{
 		LCD_Clear(WHITE);
 		POINT_COLOR=RED;
-		LCD_ShowChinese((240-(24*4+3*3))/2,20,3,"当前状态");
-
+		LCD_ShowChinese((240-(24*4+3*3))/2,5,3,"当前状态");
+		POINT_COLOR=BLACK;
+		LCD_DrawLine(15,160,225,160);
+		LCD_DrawLine(15,160+100,225,160+100);
+		LCD_DrawLine(15,160,15,260);
+		LCD_DrawLine(135,160,135,260);
+		LCD_DrawLine(45,160,45,260);
+		LCD_DrawLine(225,160,225,260);
+		LCD_DrawLine(45,190,225,190);
+		LCD_DrawLine(90,190,90,260);
+		LCD_DrawLine(180,190,180,260);
+		LCD_ShowChinese(15+4,160+20,0,"设");
+		LCD_ShowChinese(15+4,260-24-20,0,"置");
+		LCD_ShowChinese(60,160+3,7,"红灯");
+		LCD_ShowChinese(150,160+3,7,"绿灯");
+		LCD_ShowChar(45+19,190+10,'A',16,0);
+		LCD_ShowChar(45+19,190+35+10,'C',16,0);
+		LCD_ShowChar(135+19,190+10,'A',16,0);
+		LCD_ShowChar(135+19,190+35+10,'C',16,0);
+		LCD_ShowChar(90+19,190+10,'B',16,0);
+		LCD_ShowChar(90+19,190+35+10,'D',16,0);
+		LCD_ShowChar(180+19,190+10,'B',16,0);
+		LCD_ShowChar(180+19,190+35+10,'D',16,0);
+		POINT_COLOR=BLUE;
+		LCD_ShowChinese(5,260+18,0,"北京时间");
+		LCD_DisString(5+120,270+4,0,16,"2016/5/17");
+		LCD_DisString(5+120,270+20+4,0,16,"17:23:00");
+	//	LCD_ShowChar(5+100,260+20,'2',16,0);
 		for(int i=0;i<2;i++)
 		{
 			POINT_COLOR=BLUE;
-			LCD_ShowChinese(10,70*i+60,0,"路口");
-			LCD_ShowChar(10+48+2,70*i+60+4,'A'+i,16,0);
-			LCD_ShowChar(10+48+2+8,70*i+60+4,'C'+i,16,0);
-			LCD_ShowChar(10+48+2+16,70*i+60+4,':',16,0);	   		
+			LCD_ShowChinese(10,70*i+30,0,"路口");
+			LCD_ShowChar(10+48+2,70*i+30+4,'A'+i,16,0);
+			LCD_ShowChar(10+48+2+8,70*i+30+4,'C'+i,16,0);
+			LCD_ShowChar(10+48+2+16,70*i+30+4,':',16,0);	   		
 		}
 		flag=0;
 	}
@@ -263,16 +289,8 @@ void LCD_Show_WorkingSta_Page(void)
 		WorkingSta_Page_Ref(Road_Count,0);
 		WorkingSta_Page_Ref(-Road_Count,1);
 	}
-	POINT_COLOR=BLACK;
-	LCD_DrawLine(15,200,225,200);
-	LCD_DrawLine(15,300,225,300);
-	LCD_DrawLine(15,200,15,300);
-	LCD_DrawLine(135,200,135,300);
-	LCD_DrawLine(45,200,45,300);
-	LCD_DrawLine(225,200,225,300);
-	LCD_DrawLine(45,230,225,230);
-	LCD_ShowChinese(15+4,200+20,0,"设");
-	LCD_ShowChinese(15+4,300-24-20,0,"置");
+
+	
 }
 void WorkingSta_Page_Ref(short num,u8 n)
 {
@@ -280,15 +298,15 @@ void WorkingSta_Page_Ref(short num,u8 n)
 	  if(num>=0)
 		{
 			POINT_COLOR=BLUE;
-			LCD_ShowPicture(10+48+2+16+30,70*n+60+14,24,42, DisNum[num/10]);
-			LCD_ShowPicture(10+48+2+16+30+24+10,70*n+60+14,24,42,DisNum[num%10]);	
+			LCD_ShowPicture(10+48+2+16+30,70*n+40,24,42, DisNum[num/10]);
+			LCD_ShowPicture(10+48+2+16+30+24+10,70*n+40,24,42,DisNum[num%10]);	
 		}
 		else
 		{
 			POINT_COLOR=RED;
 			num=-num;
-			LCD_ShowPicture(10+48+2+16+30,70*n+60+14,24,42, DisNum[num/10]);
-			LCD_ShowPicture(10+48+2+16+30+24+10,70*n+60+14,24,42,DisNum[num%10]);	
+			LCD_ShowPicture(10+48+2+16+30,70*n+40,24,42, DisNum[num/10]);
+			LCD_ShowPicture(10+48+2+16+30+24+10,70*n+40,24,42,DisNum[num%10]);	
 		}
 }
 void Dis(void)

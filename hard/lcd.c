@@ -667,7 +667,7 @@ u8 Find_Font(char * p)
 {
 	u16 sw;
 	u16 table[CHINESE_NUM];
-	char* temp={"青岛理工大学毕业设计智能交通系统控制网络基于以太网的点击进入王其朝删除确认请登录密码错误当前状态路口设置红绿灯"};
+	char* temp={"青岛理工大学毕业设计智能交通系统控制网络基于以太网的点击进入王其朝删除确认请登录密码错误当前状态路口设置红绿灯北京时间"};
 	sw=p[1];
 	sw<<=8;
 	sw|=p[0];
@@ -881,7 +881,15 @@ void LCD_ShowString(u16 x,u16 y,u16 width,u16 height,u8 size,char *p)
         p++;
     }  
 }
-
+void LCD_DisString(u16 x,u16 y,u8 dis,u8 size,char *p)
+{
+	int i=0;
+	while(p[i])
+	{
+		LCD_ShowChar(x+i*(dis+8),y,p[i],size,0);
+		i++;
+	}
+}
 
 void Load_Drow_Dialog(void)
 {

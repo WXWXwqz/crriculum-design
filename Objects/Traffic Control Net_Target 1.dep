@@ -32,7 +32,7 @@ I (.\drive\ip_arp_udp_tcp.h)(0x5714C40D)
 I (.\drive\net.h)(0x46B94C54)
 I (F:\Keil\ARM\ARMCC\include\string.h)(0x56FE42DE)
 I (.\app\netserve.h)(0x572DD8CF)
-I (.\hard\lcd.h)(0x573AD38A)
+I (.\hard\lcd.h)(0x573AE324)
 I (F:\Keil\ARM\ARMCC\include\stdlib.h)(0x56FE42DE)
 I (.\hard\touch.h)(0x572DD583)
 I (.\hard\key.h)(0x57294B03)
@@ -175,9 +175,9 @@ I (f:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\StdPeriph_Driver\inc\stm32f1
 I (f:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9EB20)
 I (f:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9EB20)
 F (.\hard\spi_enc28j60.h)(0x5711E6B3)()
-F (.\hard\font.h)(0x573AD374)()
-F (.\hard\lcd.c)(0x573AD38A)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I F:\Keil\ARM\CMSIS\RTOS -I .\SYSTEM -I .\Class -I .\USER -I .\hard -I .\drive -I .\app-I "D:\Own\curriculum designe\Traffic Contrlo Net\RTE"-I "D:\Own\curriculum designe\Traffic Contrlo Net\RTE\Device\STM32F103ZE"-I f:\Keil\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I f:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\Include-I f:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="520" -D_RTE_ -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD -DMAX_MAIN-o .\objects\lcd.o --omf_browse .\objects\lcd.crf --depend .\objects\lcd.d)
-I (hard\lcd.h)(0x573AD38A)
+F (.\hard\font.h)(0x573ADF37)()
+F (.\hard\lcd.c)(0x573AE35C)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I F:\Keil\ARM\CMSIS\RTOS -I .\SYSTEM -I .\Class -I .\USER -I .\hard -I .\drive -I .\app-I "D:\Own\curriculum designe\Traffic Contrlo Net\RTE"-I "D:\Own\curriculum designe\Traffic Contrlo Net\RTE\Device\STM32F103ZE"-I f:\Keil\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I f:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\Include-I f:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="520" -D_RTE_ -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD -DMAX_MAIN-o .\objects\lcd.o --omf_browse .\objects\lcd.crf --depend .\objects\lcd.d)
+I (hard\lcd.h)(0x573AE324)
 I (.\SYSTEM\sys.h)(0x573AA93E)
 I (f:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\Include\stm32f10x.h)(0x53BA0D60)
 I (f:\Keil\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include\core_cm3.h)(0x5625B70C)
@@ -199,7 +199,7 @@ I (f:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\StdPeriph_Driver\inc\stm32f1
 I (f:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9EB20)
 I (f:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9EB20)
 I (F:\Keil\ARM\ARMCC\include\stdlib.h)(0x56FE42DE)
-I (hard\font.h)(0x573AD374)
+I (hard\font.h)(0x573ADF37)
 I (.\SYSTEM\usart.h)(0x5711E03F)
 I (F:\Keil\ARM\ARMCC\include\stdio.h)(0x56FE42DE)
 I (.\SYSTEM\delay.h)(0x5711D4E3)
@@ -227,7 +227,7 @@ I (f:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\StdPeriph_Driver\inc\stm32f1
 I (f:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\StdPeriph_Driver\inc\stm32f10x_tim.h)(0x52F9EB20)
 I (f:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9EB20)
 I (f:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9EB20)
-I (hard\lcd.h)(0x573AD38A)
+I (hard\lcd.h)(0x573AE324)
 I (F:\Keil\ARM\ARMCC\include\stdlib.h)(0x56FE42DE)
 I (.\SYSTEM\delay.h)(0x5711D4E3)
 I (F:\Keil\ARM\ARMCC\include\math.h)(0x56FE42D6)
@@ -409,7 +409,7 @@ I (f:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\StdPeriph_Driver\inc\misc.h)
 I (F:\Keil\ARM\ARMCC\include\string.h)(0x56FE42DE)
 I (F:\Keil\ARM\ARMCC\include\stdio.h)(0x56FE42DE)
 I (.\SYSTEM\delay.h)(0x5711D4E3)
-F (.\app\dis.c)(0x573AD56F)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I F:\Keil\ARM\CMSIS\RTOS -I .\SYSTEM -I .\Class -I .\USER -I .\hard -I .\drive -I .\app-I "D:\Own\curriculum designe\Traffic Contrlo Net\RTE"-I "D:\Own\curriculum designe\Traffic Contrlo Net\RTE\Device\STM32F103ZE"-I f:\Keil\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I f:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\Include-I f:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="520" -D_RTE_ -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD -DMAX_MAIN-o .\objects\dis.o --omf_browse .\objects\dis.crf --depend .\objects\dis.d)
+F (.\app\dis.c)(0x573AE47B)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I F:\Keil\ARM\CMSIS\RTOS -I .\SYSTEM -I .\Class -I .\USER -I .\hard -I .\drive -I .\app-I "D:\Own\curriculum designe\Traffic Contrlo Net\RTE"-I "D:\Own\curriculum designe\Traffic Contrlo Net\RTE\Device\STM32F103ZE"-I f:\Keil\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include-I f:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\Include-I f:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\StdPeriph_Driver\inc-D__UVISION_VERSION="520" -D_RTE_ -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD -DMAX_MAIN-o .\objects\dis.o --omf_browse .\objects\dis.crf --depend .\objects\dis.d)
 I (app\dis.h)(0x573ABEA4)
 I (.\hard\touch.h)(0x572DD583)
 I (.\SYSTEM\sys.h)(0x573AA93E)
@@ -432,7 +432,7 @@ I (f:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\StdPeriph_Driver\inc\stm32f1
 I (f:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\StdPeriph_Driver\inc\stm32f10x_tim.h)(0x52F9EB20)
 I (f:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\StdPeriph_Driver\inc\stm32f10x_usart.h)(0x52F9EB20)
 I (f:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\StdPeriph_Driver\inc\misc.h)(0x52F9EB20)
-I (.\hard\lcd.h)(0x573AD38A)
+I (.\hard\lcd.h)(0x573AE324)
 I (F:\Keil\ARM\ARMCC\include\stdlib.h)(0x56FE42DE)
 I (F:\Keil\ARM\ARMCC\include\stdio.h)(0x56FE42DE)
 I (.\hard\key.h)(0x57294B03)
