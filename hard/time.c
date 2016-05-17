@@ -8,6 +8,10 @@
 #include "delay.h"
 #include "stdio.h"
 #include "netserve.h"
+#include "sys.h"
+extern T_Dis_Flag DisFlag;
+extern short   Road_Count;
+extern short   RoadLinght_Count[2];
 void TIM2_Init()
 {
     TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure; 
@@ -55,20 +59,48 @@ void TIM3_Init(void)
 		TIM_Cmd(TIM3,ENABLE);
 }
 void TIM3_IRQHandler(void)
-{		
-    TIM_ClearITPendingBit(TIM3,TIM_IT_Update);
-		if(IPandARP_Serve())
+{	
+	static int cnt=0;
+	cnt++;
+	if(cnt%500==0)
+	{
+		DisFlag.t500ms=1;
+	}
+	if(cnt%1000==0)
+	{
+		DisFlag.t1000ms=1;
+		if(Road_Count>0)
 		{
-			goto BREAK;
+			Road_Count--;
+			if(Road_Count==0)
+			{
+				Road_Count=-RoadLinght_Count[1];
+			}
 		}
-		if(Ping_Serve())
+		else
 		{
-			goto BREAK;
+			Road_Count++;	
+			if(Road_Count==0)
+			{
+				Road_Count=RoadLinght_Count[0];
+			}
 		}
-		if(UDP_Serve())
-		{
-			goto BREAK;
-		}
-		BREAK: ;
+	}
+
+	TIM_ClearITPendingBit(TIM3,TIM_IT_Update);
+	
+	if(IPandARP_Serve())
+	{
+		goto BREAK;
+	}
+	if(Ping_Serve())
+	{
+		goto BREAK;
+	}
+	if(UDP_Serve())
+	{
+		goto BREAK;
+	}
+	BREAK: ;
 }
 

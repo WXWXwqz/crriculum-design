@@ -53,22 +53,14 @@ int main(void)
 		
 	while(1)
 	{
-		#ifdef MAX_MAIN	
-		static u8 t_cnt=0;
-		t_cnt++;
-		if(t_cnt==40)
+		if(DisFlag.t500ms)
 		{
 			DS0.overturn();
-			t_cnt=0;
-		}
-		delay_ms(25);
+			DisFlag.t500ms=0;
+		}		
+		#ifdef MAX_MAIN	
 		Dis();
-
-	#else
-	DS0.overturn();
-	delay_ms(1000);
-	
-  #endif
+    #endif
 	}
 	
 }

@@ -27,3 +27,4 @@
 .\objects\time.o: .\drive\net.h
 .\objects\time.o: .\drive\enc28j60.h
 .\objects\time.o: F:\Keil\ARM\ARMCC\Bin\..\include\string.h
+.\objects\time.o: .\SYSTEM\sys.h

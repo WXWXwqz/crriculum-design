@@ -3,7 +3,10 @@
 #include "key.h"
 #include "delay.h"
 T_Dis_Flag DisFlag;
+extern const u8 QTU_Pinture[240*9];
 char PassWord[10]="123321123";
+short   Road_Count=30;
+short   RoadLinght_Count[2]={80,25};
 void LCD_Show_Main_Page(void)
 {
 	static u8 flag=1;
@@ -11,7 +14,7 @@ void LCD_Show_Main_Page(void)
 	{
 		POINT_COLOR=BLUE;//设置字体为红色 
 		LCD_Clear(WHITE);//清屏
-		LCD_ShowPicture(1,1,240,70);
+		LCD_ShowPicture(1,1,240,70,QTU_Pinture);
 		LCD_ShowChinese((lcddev.width-24*4-1)/2,80,1,"毕业设计");	
 		LCD_ShowChinese((lcddev.width-24*9)/2,110,0,"基于以太网的智能交");
 		LCD_ShowChinese((lcddev.width-24*9)/2,110+24,0,"通系统控制网络设计");
@@ -52,52 +55,13 @@ void LCD_Show_Adjust_Page(void)
 		DisFlag.dis_adjust=0;		
 	  DisFlag.dis_main=1;	
 }
-void LCD_Show_Login_Page(void)
+u8 LCD_Get_Input(char *data,u8 num)
 {
-	static u8 flag=1;
-	static u8 passflag=0;
 	u8 sw = 0xff;
-  static	char password[11]={0};
-  static u8 pcnt=0;
-	if(flag)         //显示界面
-	{
-		delay_ms(100);
-		LCD_Clear(WHITE);//清屏
-		POINT_COLOR=RED;//设置字体为红色 
-     LCD_ShowChinese((240-24*3-3*2)/2,20,3,"请登录");
-		POINT_COLOR=BLUE;//设置字体为红色 
-		for(int i=0;i<6;i++)  //横线
-		{
-			LCD_DrawLine(15,50+i*50,225,50+i*50);
-		}
-		LCD_DrawLine(15,50,15,100);
-		LCD_DrawLine(225,50,225,100);
-		for(int i=0;i<4;i++)  //竖线
-		{
-			LCD_DrawLine(15+i*70,100,15+i*70,300);
-		}
-		for(int i=0;i<3;i++)      //行
-		{
-			for(int j=0;j<3;j++)      //列
-			{
-				LCD_ShowChar(15+j*70+(70-8)/2,100+50*i+17,'0'+i*3+j+1,16,0);
-			}
-		}
-		LCD_ShowChar(15+1*70+(70-8)/2,100+50*3+17,'0',16,0);       //0
-		LCD_ShowChinese(15+11,250+13,0,"删除");
-		LCD_ShowChinese(155+11,250+13,0,"确认");
-		POINT_COLOR=BLUE;//设置字体为红色 
-		LCD_ShowChinese(15+11,50+13,0,"密码");
-		LCD_ShowChar(15+11+48+1,50+17,':',16,0);
-		flag=0;
-	}
+	static u8 dataflag=0;
+	static	char dataword[11]={0};
+	static u8 datacnt=0;
 	tp_dev.scan(0);
-	if(KEY_Scan(0)==KEY_RIGHT)	//KEY_RIGHT按下,则执行校准程序
-	{
-		DisFlag.dis_adjust=1;		
-    DisFlag.dis_login=0;		
-		flag=1;
-	}
 	if(tp_dev.sta&TP_PRES_DOWN)			//触摸屏被按下
 	{	
 		if(tp_dev.x[0]<lcddev.width&&tp_dev.y[0]<lcddev.height)
@@ -136,83 +100,102 @@ void LCD_Show_Login_Page(void)
 					{
 						sw|=0x40;
 					}
-					passflag=1;	
+					dataflag=1;	
 					switch(sw)
 					{
-						case 0x11: password[pcnt]='1';break;
-						case 0x12: password[pcnt]='2';break;
-						case 0x13: password[pcnt]='3';break;
-						case 0x21: password[pcnt]='4';break;
-						case 0x22: password[pcnt]='5';break;
-						case 0x23: password[pcnt]='6';break;
-						case 0x31: password[pcnt]='7';break;
-						case 0x32: password[pcnt]='8';break;
-						case 0x33: password[pcnt]='9';break;
-						case 0x41: password[pcnt]=' ';break;
-						case 0x42: password[pcnt]='0';break;
-						case 0x43: password[pcnt]='O';break;
-						default  : password[pcnt]=0;
+						case 0x11: dataword[datacnt]='1';break;
+						case 0x12: dataword[datacnt]='2';break;
+						case 0x13: dataword[datacnt]='3';break;
+						case 0x21: dataword[datacnt]='4';break;
+						case 0x22: dataword[datacnt]='5';break;
+						case 0x23: dataword[datacnt]='6';break;
+						case 0x31: dataword[datacnt]='7';break;
+						case 0x32: dataword[datacnt]='8';break;
+						case 0x33: dataword[datacnt]='9';break;
+						case 0x41: dataword[datacnt]=' ';break;
+						case 0x42: dataword[datacnt]='0';break;
+						case 0x43: dataword[datacnt]='O';break;
+						default  : dataword[datacnt]=0;
 					}
-					if(pcnt==10&&password[pcnt]!=' '&&password[pcnt]!='O')
+					if(datacnt==10&&dataword[datacnt]!=' '&&dataword[datacnt]!='O')
 					{
-						password[pcnt]=0;
-						pcnt=9;
+						dataword[datacnt]=0;
+						datacnt=9;
 					}
 					sw=0xff;
 				}
 			}
 		}
-	}
-	if(passflag)
+	}	
+	if(dataflag)      //有数字按下
 	{
-		passflag=0;		
-		if(password[pcnt]!=' '&&password[pcnt])
+		dataflag=0;		
+		if(dataword[datacnt]!=' '&&dataword[datacnt])   //不是删除或者错误键位
 		{
 			
-			if(password[pcnt]=='O')  //确认
-			{	
-				int i=0;				
-				while(PassWord[i]!=0)
-				{
-					if(PassWord[i]!=password[i])
-					{
-						LCD_ShowChinese(85+10,50+13,0,"密码错误");
-						delay_ms(1000);
-						LCD_Fill(85+10,50+13,85+10+24*4+8,50+17+24,WHITE);			
-						break;
-					}
-					i++;
-				}
-				if(PassWord[i]==0&&password[i]=='O')
-				{
-					DisFlag.dis_login=0;
-					DisFlag.dis_work=1;
-					flag=1;
-					passflag=0;
-				}
-				pcnt=0;
+			if(dataword[datacnt]=='O')  //是确认  
+			{					
+				datacnt=0;                
 				for(int i=0;i<10;i++)
 				{
-					password[i]=0;
+					data[i]=dataword[i];
+					dataword[i]=0;					
 				}
+				return 1;
 			}
-			else
+			else                     //是正常数字按键
 			{
-				LCD_ShowChar(85+10+pcnt*8,50+17,password[pcnt],16,0);
-				pcnt++;
+				LCD_ShowChar(85+10+datacnt*8,50+17,dataword[datacnt],16,0);
+				datacnt++;
 			}
 		}
-		else if(password[pcnt])
+		else if(dataword[datacnt])        //删除键
 		{
-			if(pcnt>0)
+			if(datacnt>0)
 			{
-				password[pcnt]=0;
-				password[--pcnt]=0;
-				LCD_Fill(85+10+pcnt*8,50+17,85+10+pcnt*8+8,50+17+16,WHITE);
+				dataword[datacnt]=0;
+				dataword[--datacnt]=0;
+				LCD_Fill(85+10+datacnt*8,50+17,85+10+datacnt*8+8,50+17+16,WHITE);
 			}
 		}
-		printf("password=%s\n",password);
-		printf("cnt=%d\n",pcnt);
+//		printf("dataword=%s\n",dataword);
+//		printf("cnt=%d\n",datacnt);	
+	}
+	return 0;
+}
+void LCD_Show_Login_Page(void)
+{
+	static u8 flag=1;
+  static	char password[11]={0};
+	if(flag)         //显示界面
+	{
+		delay_ms(100);
+		LCD_Clear(WHITE);//清屏
+		POINT_COLOR=RED;//设置字体为红色 
+    LCD_ShowChinese((240-24*3-3*2)/2,20,3,"请登录");
+		LCD_Show_InPut_Page("密码");
+		flag=0;
+	}
+	if(LCD_Get_Input(password,10))    //得到密码，进行校验
+	{
+			int i=0;				
+			while(PassWord[i]!=0)
+			{
+				if(PassWord[i]!=password[i])
+				{
+					LCD_ShowChinese(85+10,50+13,0,"密码错误");
+					delay_ms(1000);
+					LCD_Fill(85+10,50+13,85+10+24*4+8,50+17+24,WHITE);			
+					break;
+				}
+				i++;
+			}
+			if(PassWord[i]==0&&password[i]=='O')  //密码正确
+			{
+				DisFlag.dis_login=0;
+				DisFlag.dis_work_sta=1;
+				flag=1;
+			}		
 	}
 }
 void LCD_Show_Test_Page (void)
@@ -225,6 +208,88 @@ void LCD_Show_Test_Page (void)
 	  LCD_ShowString(60,80,200,16,16,"Please wait");
 		flag=0;
 	}
+}
+
+void LCD_Show_InPut_Page(char *title)
+{
+		POINT_COLOR=BLUE;//设置字体为红色 
+		for(int i=0;i<6;i++)  //横线
+		{
+			LCD_DrawLine(15,50+i*50,225,50+i*50);
+		}
+		LCD_DrawLine(15,50,15,100);
+		LCD_DrawLine(225,50,225,100);
+		for(int i=0;i<4;i++)  //竖线
+		{
+			LCD_DrawLine(15+i*70,100,15+i*70,300);
+		}
+		for(int i=0;i<3;i++)      //行
+		{
+			for(int j=0;j<3;j++)      //列
+			{
+				LCD_ShowChar(15+j*70+(70-8)/2,100+50*i+17,'0'+i*3+j+1,16,0);
+			}
+		}
+		LCD_ShowChar(15+1*70+(70-8)/2,100+50*3+17,'0',16,0);       //0
+		LCD_ShowChinese(15+11,250+13,0,"删除");
+		LCD_ShowChinese(155+11,250+13,0,"确认");
+		POINT_COLOR=BLUE;//设置字体为红色 
+		LCD_ShowChinese(15+11,50+13,0,title);
+	//	LCD_ShowChar(15+11+48+1,50+17,':',16,0);	
+}
+extern const unsigned char DisNum[10][24*48/8];
+void LCD_Show_WorkingSta_Page(void)
+{
+	static u8 flag=1;
+	if(flag)         //显示界面
+	{
+		LCD_Clear(WHITE);
+		POINT_COLOR=RED;
+		LCD_ShowChinese((240-(24*4+3*3))/2,20,3,"当前状态");
+
+		for(int i=0;i<2;i++)
+		{
+			POINT_COLOR=BLUE;
+			LCD_ShowChinese(10,70*i+60,0,"路口");
+			LCD_ShowChar(10+48+2,70*i+60+4,'A'+i,16,0);
+			LCD_ShowChar(10+48+2+8,70*i+60+4,'C'+i,16,0);
+			LCD_ShowChar(10+48+2+16,70*i+60+4,':',16,0);	   		
+		}
+		flag=0;
+	}
+	if(DisFlag.t1000ms)
+	{
+		DisFlag.t1000ms=0;
+		WorkingSta_Page_Ref(Road_Count,0);
+		WorkingSta_Page_Ref(-Road_Count,1);
+	}
+	POINT_COLOR=BLACK;
+	LCD_DrawLine(15,200,225,200);
+	LCD_DrawLine(15,300,225,300);
+	LCD_DrawLine(15,200,15,300);
+	LCD_DrawLine(135,200,135,300);
+	LCD_DrawLine(45,200,45,300);
+	LCD_DrawLine(225,200,225,300);
+	LCD_DrawLine(45,230,225,230);
+	LCD_ShowChinese(15+4,200+20,0,"设");
+	LCD_ShowChinese(15+4,300-24-20,0,"置");
+}
+void WorkingSta_Page_Ref(short num,u8 n)
+{
+
+	  if(num>=0)
+		{
+			POINT_COLOR=BLUE;
+			LCD_ShowPicture(10+48+2+16+30,70*n+60+14,24,42, DisNum[num/10]);
+			LCD_ShowPicture(10+48+2+16+30+24+10,70*n+60+14,24,42,DisNum[num%10]);	
+		}
+		else
+		{
+			POINT_COLOR=RED;
+			num=-num;
+			LCD_ShowPicture(10+48+2+16+30,70*n+60+14,24,42, DisNum[num/10]);
+			LCD_ShowPicture(10+48+2+16+30+24+10,70*n+60+14,24,42,DisNum[num%10]);	
+		}
 }
 void Dis(void)
 {
@@ -240,9 +305,9 @@ void Dis(void)
 	{
 		LCD_Show_Login_Page();
 	}
-	else if(DisFlag.dis_work)
+	else if(DisFlag.dis_work_sta)
 	{		
-		LCD_Show_Test_Page();
+		LCD_Show_WorkingSta_Page();
 	}
 	
 }

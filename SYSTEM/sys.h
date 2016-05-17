@@ -55,6 +55,15 @@ typedef struct
 	long dis_last		:1;
 	long dis_login   :1;
 	long dis_work   :1;
+	long dis_work_sta   :1;
+	long t1ms       :1;
+	long t10ms       :1;
+	long t100ms       :1;
+	long t200ms       :1;
+	long t500ms       :1;
+	long t1000ms       :1;
+	long dis_road_light       :1;
+	
 } T_Dis_Flag;
 
 #endif

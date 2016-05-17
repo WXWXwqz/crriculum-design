@@ -667,7 +667,7 @@ u8 Find_Font(char * p)
 {
 	u16 sw;
 	u16 table[CHINESE_NUM];
-	char* temp={"青岛理工大学毕业设计智能交通系统控制网络基于以太网的点击进入王其朝删除确认请登录密码错误"};
+	char* temp={"青岛理工大学毕业设计智能交通系统控制网络基于以太网的点击进入王其朝删除确认请登录密码错误当前状态路口设置红绿灯"};
 	sw=p[1];
 	sw<<=8;
 	sw|=p[0];
@@ -891,7 +891,7 @@ void Load_Drow_Dialog(void)
   POINT_COLOR=RED;//设置画笔蓝色 
 }
 
-void LCD_ShowPicture(u16 x,u16 y,u16 lie,u16 hang)
+void LCD_ShowPicture(u16 x,u16 y,u16 lie,u16 hang,const unsigned char *picture)
 {
 	u8 temp;
 	u8 y0;
@@ -905,7 +905,7 @@ void LCD_ShowPicture(u16 x,u16 y,u16 lie,u16 hang)
 		y=y0;
 		for(int i=0;i<hangzong;i++)
 		{
-			temp=QTU_Pinture[cnt++];
+			temp=picture[cnt++];
 			u8 tcnt=8;
 			if(i==(hangzong-1))
 			{				

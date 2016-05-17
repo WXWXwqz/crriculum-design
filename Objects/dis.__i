@@ -1,0 +1,8 @@
+--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I F:\Keil\ARM\CMSIS\RTOS -I .\SYSTEM -I .\Class -I .\USER -I .\hard -I .\drive -I .\app
+-I "D:\Own\curriculum designe\Traffic Contrlo Net\RTE"
+-I "D:\Own\curriculum designe\Traffic Contrlo Net\RTE\Device\STM32F103ZE"
+-I f:\Keil\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include
+-I f:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\Include
+-I f:\Keil\ARM\PACK\Keil\STM32F1xx_DFP\2.0.0\Device\StdPeriph_Driver\inc
+-D__UVISION_VERSION="520" -D_RTE_ -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD -DMAX_MAIN
+-o .\objects\dis.o --omf_browse .\objects\dis.crf --depend .\objects\dis.d "app\dis.c"

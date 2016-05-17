@@ -25,6 +25,8 @@ extern T_Dis_Flag DisFlag;
 void LCD_Show_Main_Page(void);
 void LCD_Show_Login_Page(void);
 void Dis(void);
+void WorkingSta_Page_Ref(short num,u8 n);
+void LCD_Show_InPut_Page(char *title);
 #ifdef __cplusplus
 }
 #endif
