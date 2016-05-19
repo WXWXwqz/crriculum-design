@@ -23,7 +23,6 @@ Led DS1(GPIOE,GPIO_Pin_2);
 Led DS0(GPIOB,GPIO_Pin_8);
 Led DS1(GPIOB,GPIO_Pin_9);
 #endif
-
 void Sys_Init(void)
 {	
   delay_init();		
@@ -38,8 +37,15 @@ void Sys_Init(void)
 	KEY_Init();	 
 	FLASH_Unlock();
 	EE_INIT();	 
+	EE_Read_PassWord();
+	EE_Read_LightTime();
 	tp_dev.init();
 	DisFlag.dis_main=1;
+	DisFlag.mode=0;// ÷∂Ø
+	DisFlag.mode_dis=1;
+	DisFlag.monitor=0; //Œ¥º‡ ”
+	DisFlag.monitor_dis=1;
+	
 	#endif
 	TIM3_Init();
 	

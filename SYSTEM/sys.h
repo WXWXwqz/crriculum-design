@@ -56,6 +56,8 @@ typedef struct
 	long dis_login   :1;
 	long dis_work   :1;
 	long dis_work_sta   :1;
+	long dis_work_sta_input   :1;
+	long dis_work_sta_input_redac :1;
 	long t1ms       :1;
 	long t10ms       :1;
 	long t100ms       :1;
@@ -63,6 +65,10 @@ typedef struct
 	long t500ms       :1;
 	long t1000ms       :1;
 	long dis_road_light       :1;
+	long mode_dis       :1;
+	long mode          :1;
+	long monitor       :1;
+	long monitor_dis       :1;
 	
 } T_Dis_Flag;
 

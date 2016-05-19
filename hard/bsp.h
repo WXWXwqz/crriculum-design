@@ -21,15 +21,22 @@ extern "C"
 #define YOFF  	  6
 #define YOFF_L	  6
 #define YOFF_H	  7
-
 #define TOUCHTYPE	8
 #define TOUCHFLAG 9
-
+#define ROADLIGHT0	10
+#define ROADLIGHT1 11
+#define PASSWORD   12
+extern char PassWord[10];
+extern short   Road_Count;
+extern short   RoadLinght_Count[2];
 void EE_INIT(void);
 int EE_Read_Byte(int Off);
 int EE_Read_Word(int Off);
 void EE_Write_Word(int Off,int data);
 void EE_Write_Byte(int Off,short data);
+void EE_Save_PassWord(void);
+int  EE_Read_PassWord(void);
+void EE_Read_LightTime(void);
 #ifdef __cplusplus
 }
 #endif

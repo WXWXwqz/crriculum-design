@@ -38,6 +38,7 @@ int Ping_Serve(void);
 int IPandARP_Serve(void);
 int UDP_Serve(void);
 void SendPacket(void);
+int HandleUDPPacket(void);
 	#ifdef __cplusplus
 }
 #endif

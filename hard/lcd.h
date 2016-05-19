@@ -116,7 +116,7 @@ void LCD_Set_Window(u16 sx,u16 sy,u16 width,u16 height);//ÉèÖÃ´°¿Ú
 void Load_Drow_Dialog(void);
 u8 Find_Font(char * p);
 void LCD_Show_Main_Page(void);
-#define CHINESE_NUM 59
+#define CHINESE_NUM 65
 //9320/9325 LCD¼Ä´æÆ÷  
 #define R0             0x00
 #define R1             0x01

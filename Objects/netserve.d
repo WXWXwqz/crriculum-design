@@ -26,3 +26,6 @@
 .\objects\netserve.o: F:\Keil\ARM\ARMCC\Bin\..\include\string.h
 .\objects\netserve.o: F:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\netserve.o: .\SYSTEM\delay.h
+.\objects\netserve.o: .\hard\bsp.h
+.\objects\netserve.o: .\hard\eeprom.h
+.\objects\netserve.o: .\SYSTEM\sys.h

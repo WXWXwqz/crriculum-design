@@ -9,6 +9,7 @@
 #include "stdio.h"
 #include "netserve.h"
 #include "sys.h"
+#include "lcd.h"
 extern T_Dis_Flag DisFlag;
 extern short   Road_Count;
 extern short   RoadLinght_Count[2];
@@ -58,9 +59,11 @@ void TIM3_Init(void)
 		NVIC_Init(&NVIC_InitStructure); 
 		TIM_Cmd(TIM3,ENABLE);
 }
+u8  monitor_cnt=0;
 void TIM3_IRQHandler(void)
 {	
 	static int cnt=0;
+
 	cnt++;
 	if(cnt%500==0)
 	{
@@ -69,6 +72,18 @@ void TIM3_IRQHandler(void)
 	if(cnt%1000==0)
 	{
 		DisFlag.t1000ms=1;
+		if(DisFlag.monitor)     //监控状态下，3秒监控计数器位复位则认为未监控
+		{
+			monitor_cnt++;
+			if(monitor_cnt>3)
+			{
+				monitor_cnt=0;
+				DisFlag.monitor=0;
+				LCD_DisString(5+120,270+4,0,16,"          ");
+		    LCD_DisString(5+120,270+20+4,0,16,"         ");
+				DisFlag.monitor_dis=1;
+			}
+		}
 		if(Road_Count>0)
 		{
 			Road_Count--;

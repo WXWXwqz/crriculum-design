@@ -26,4 +26,6 @@
 .\objects\dis.o: F:\Keil\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\dis.o: F:\Keil\ARM\ARMCC\Bin\..\include\stdio.h
 .\objects\dis.o: .\hard\key.h
+.\objects\dis.o: .\hard\bsp.h
+.\objects\dis.o: .\hard\eeprom.h
 .\objects\dis.o: .\SYSTEM\delay.h

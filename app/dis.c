@@ -1,13 +1,16 @@
 #include "dis.h"
 #include "stdio.h"
 #include "key.h"
+#include "bsp.h"
 #include "delay.h"
 T_Dis_Flag DisFlag;
 extern const u8 QTU_Pinture[240*9];
 char PassWord[10]="123321123";
-short   Road_Count=30;
-short   RoadLinght_Count[2]={80,25};
-void LCD_Show_Main_Page(void)
+char Time[23]={0};
+short   Road_Count;
+short   RoadLinght_Count[2]={80,25};   //分别为AC的绿灯(BD的红灯)和BD的红灯(AC的红灯)
+
+void LCD_Show_Main_Page(void)       
 {
 	static u8 flag=1;
 	if(flag)
@@ -117,10 +120,10 @@ u8 LCD_Get_Input(char *data,u8 num)
 						case 0x43: dataword[datacnt]='O';break;
 						default  : dataword[datacnt]=0;
 					}
-					if(datacnt==10&&dataword[datacnt]!=' '&&dataword[datacnt]!='O')
+					if(datacnt==num&&dataword[datacnt]!=' '&&dataword[datacnt]!='O')
 					{
 						dataword[datacnt]=0;
-						datacnt=9;
+						datacnt=num-1;
 					}
 					sw=0xff;
 				}
@@ -136,11 +139,13 @@ u8 LCD_Get_Input(char *data,u8 num)
 			if(dataword[datacnt]=='O')  //是确认  
 			{					
 				datacnt=0;                
-				for(int i=0;i<10;i++)
+				for(int i=0;i<num;i++)
 				{
 					data[i]=dataword[i];
 					dataword[i]=0;					
 				}
+	      dataflag=0;
+				datacnt=0;				
 				return 1;
 			}
 			else                     //是正常数字按键
@@ -170,10 +175,9 @@ void LCD_Show_Login_Page(void)
 	if(flag)         //显示界面
 	{
 		delay_ms(100);
-		LCD_Clear(WHITE);//清屏
+		LCD_Show_InPut_Page("密码");
 		POINT_COLOR=RED;//设置字体为红色 
     LCD_ShowChinese((240-24*3-3*2)/2,20,3,"请登录");
-		LCD_Show_InPut_Page("密码");
 		flag=0;
 	}
 	if(LCD_Get_Input(password,10))    //得到密码，进行校验
@@ -212,6 +216,7 @@ void LCD_Show_Test_Page (void)
 
 void LCD_Show_InPut_Page(char *title)
 {
+	  LCD_Clear(WHITE);
 		POINT_COLOR=BLUE;//设置字体为红色 
 		for(int i=0;i<6;i++)  //横线
 		{
@@ -238,14 +243,20 @@ void LCD_Show_InPut_Page(char *title)
 	//	LCD_ShowChar(15+11+48+1,50+17,':',16,0);	
 }
 extern const unsigned char DisNum[10][24*48/8];
+void LCD_Show_WorkingSta_Input_Page(void)
+{
+	
+}
 void LCD_Show_WorkingSta_Page(void)
 {
 	static u8 flag=1;
+	char time[3];
 	if(flag)         //显示界面
 	{
 		LCD_Clear(WHITE);
 		POINT_COLOR=RED;
-		LCD_ShowChinese((240-(24*4+3*3))/2,5,3,"当前状态");
+		LCD_ShowChinese(5,5,0,"当前状态");
+		LCD_ShowChar(10+24*4,5+4,':',16,0);
 		POINT_COLOR=BLACK;
 		LCD_DrawLine(15,160,225,160);
 		LCD_DrawLine(15,160+100,225,160+100);
@@ -270,8 +281,6 @@ void LCD_Show_WorkingSta_Page(void)
 		LCD_ShowChar(180+19,190+35+10,'D',16,0);
 		POINT_COLOR=BLUE;
 		LCD_ShowChinese(5,260+18,0,"北京时间");
-		LCD_DisString(5+120,270+4,0,16,"2016/5/17");
-		LCD_DisString(5+120,270+20+4,0,16,"17:23:00");
 	//	LCD_ShowChar(5+100,260+20,'2',16,0);
 		for(int i=0;i<2;i++)
 		{
@@ -283,12 +292,112 @@ void LCD_Show_WorkingSta_Page(void)
 		}
 		flag=0;
 	}
-	if(DisFlag.t1000ms)
+	if(DisFlag.monitor_dis)
+	{
+		DisFlag.monitor_dis=0;
+		if(DisFlag.monitor)
+		{
+			POINT_COLOR=BLUE;
+			LCD_ShowChinese(5+24*4+8+24*2+10,5,0,"监控");
+			LCD_Fill(5+24*4+8+24*2+10+24+24,5,5+24*4+8+24*2+10+24+24+24,5+24,WHITE);
+		}
+		else
+		{
+			POINT_COLOR=RED;
+			LCD_ShowChinese(5+24*4+8+24*2+10,5,0,"未监控");
+		}
+	}
+	if(DisFlag.mode_dis)
+	{
+		DisFlag.mode_dis=0;
+		if(DisFlag.mode)
+		{
+			POINT_COLOR=BLUE;
+			LCD_ShowChinese(10+24*4+8,5,0,"自动");
+		}
+		else
+		{
+			POINT_COLOR=BLUE;
+			LCD_ShowChinese(10+24*4+8,5,0,"手动");
+		}
+	}
+	if(DisFlag.t1000ms && !DisFlag.dis_work_sta_input)
 	{
 		DisFlag.t1000ms=0;
 		WorkingSta_Page_Ref(Road_Count,0);
 		WorkingSta_Page_Ref(-Road_Count,1);
+		POINT_COLOR=RED;
+		if(DisFlag.monitor)
+		{
+			LCD_DisString(5+120,270+4,0,16,Time);
+			LCD_DisString(5+120,270+20+4,0,16,Time+10);
+		}
 	}
+	if(!DisFlag.dis_work_sta_input)
+	{
+		tp_dev.scan(0);
+		if(tp_dev.sta&TP_PRES_DOWN)			//触摸屏被按下
+		{	
+			if(tp_dev.x[0]<=225&&tp_dev.x[0]>=45&&tp_dev.y[0]<=260&&tp_dev.y[0]>=190)
+			{
+					if(tp_dev.x[0]<=180&&tp_dev.x[0]>=90)
+					{						
+						delay_ms(300);
+						DisFlag.dis_work_sta_input=1;
+						LCD_Show_InPut_Page("时间");
+						LCD_ShowChinese((240-24*5-4*2)/2,20,3,"请设置时间");
+						DisFlag.dis_work_sta_input_redac=0;
+					}
+					else
+					{
+						DisFlag.dis_work_sta_input=1;
+						
+						delay_ms(300);
+						LCD_Show_InPut_Page("时间");
+						LCD_ShowChinese((240-24*5-4*2)/2,20,3,"请设置时间");
+						DisFlag.dis_work_sta_input_redac=1;
+					}
+			}
+		}
+	}
+	else
+	{
+		if(LCD_Get_Input(time,2))
+		{
+			if(DisFlag.dis_work_sta_input_redac)
+			{
+				if(time[1]>='0'&&time[1]<='9')
+				{
+					RoadLinght_Count[1]=(time[0]-'0')*10+time[1]-'0';
+					EE_Write_Byte(ROADLIGHT1,RoadLinght_Count[1]);
+				}
+				else
+				{
+			  	RoadLinght_Count[1]=(time[0]-'0');
+					EE_Write_Byte(ROADLIGHT1,RoadLinght_Count[1]);
+				}
+			}
+			else
+			{
+				if(time[1]>='0'&&time[1]<='9')
+				{
+					RoadLinght_Count[0]=(time[0]-'0')*10+time[1]-'0';
+					EE_Write_Byte(ROADLIGHT0,RoadLinght_Count[0]);
+				}
+				else
+				{
+			  	RoadLinght_Count[0]=(time[0]-'0');
+					EE_Write_Byte(ROADLIGHT0,RoadLinght_Count[0]);
+				}
+			}
+			DisFlag.dis_work_sta_input=0;
+			flag=1;
+			DisFlag.mode_dis=1;
+			DisFlag.monitor_dis=1;
+		}
+//		printf("%c ",time[0]);printf("%c ",time[1]);
+	}
+	
 
 	
 }
@@ -327,5 +436,6 @@ void Dis(void)
 	{		
 		LCD_Show_WorkingSta_Page();
 	}
+
 	
 }
